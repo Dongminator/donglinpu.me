@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<website>
+    <page name="home">
+        <navigation>Home</navigation>
+        <h1>News</h1>
+        <content>
+            <text>Third year project implementation finished! Code can be viewed on Github.</text>
+            <links>
+                <a string="Third year project">
+                    <href>http://routes.donglinpu.me/</href>
+                    <target>_blank</target>
+				</a>
+				<a string="Github">
+                    <href>https://github.com/Dongminator/comp3020</href>
+                    <target>_blank</target>
+				</a>
+			</links>
+			<date>19th March, 2013</date>
+	   	</content>
+        <content>
+            <text>Third year project implementation is almost completed. Here is a screenshot. More can be viewed on my Github.</text>
+            <links>
+                <a string="screenshot">
+                    <href>../files/3yp/screenshot/friendsroute.png</href>
+                    <target>_blank</target>
+				</a>
+				<a string="my Github">
+                    <href>https://github.com/Dongminator/donglinpu.me/tree/master/files/3yp/screenshot</href>
+                    <target>_blank</target>
+				</a>
+			</links>
+			<date>12th March, 2013</date>
+			<image src="../files/3yp/screenshot/friendsroute.png">
+	   	        <alt>3rd year project</alt>
+	   	        <width>95%</width>
+			</image>
+	   	</content>
+	   	<content>
+            <text>My website is being migrated to Heroku platform. The details can be read here.</text>
+            <links>
+                <a string="here">
+                    <href>javascript:void(0)</href>
+                    <onclick>projects('#proj_3rd')</onclick>
+				</a>
+			</links>
+			<date>18th Feb, 2013</date>
+	   	</content>
+        <content>
+            <text>My 3rd year project implementation will be finished in mid February. Here is the progress report.</text>
+            <links>
+                <a string="3rd year project">
+                    <href>http://donglinpu-comp3020.appspot.com/</href>
+                    <target>_blank</target>
+				</a>
+				<a string="progress report">
+				    <href>../files/3yp/3rd_year_proj_progress_report.pdf</href>
+				    <target>_blank</target>
+				</a>
+			</links>
+			<date>30th Jan, 2013</date>
+	   	</content>
+	   	<content>
+	   	    <text>Had an amazing 14 days in Europe. Went to Paris -> Versailles -> Geneva -> Lausanne -> Bern -> Luzern -> Jungfrau -> Milan -> Pisa -> Rome -> Vatican -> Florence -> Venice -> Innsbruck -> Munich -> Amsterdam -> Brussels. Check out the photos in "Christmas holiday 2012" album on Facebook (You need to be logged in to Facebook to see them).</text>
+	   	    <i>Paris -> Versailles -> Geneva -> Lausanne -> Bern -> Luzern -> Jungfrau -> Milan -> Pisa -> Rome -> Vatican -> Florence -> Venice -> Innsbruck -> Munich -> Amsterdam -> Brussels</i>
+	   	    <links>
+	   	        <a string='"Christmas holiday 2012" album on Facebook'>
+	   	            <href>http://www.facebook.com/DongminatingTheWorld/photos_albums</href>
+	   	            <target>_blank</target>
+	   	        </a>
+	   	    </links>
+	   	    <date>4th Jan, 2013</date>
+	   	</content>
+	   	<content>
+	   	    <text>Decided to go to the US for Masters degree. Currently working on applications.</text>
+	   	    <date>16/11/12</date>
+	   	</content>
+	   	<content>
+	   	    <text>My first Android app Calculifer has been published on the Android market!!!</text>
+ 	   	    <i>Calculifer</i>
+	   	    <links>
+	   	        <a string='Calculifer'>
+	   	            <href>https://market.android.com/details?id=me.DonglinPu.Calculifer</href>
+	   	            <target>_blank</target>
+	   	        </a>
+	   	    </links>
+	   	    <date>27/02/12</date>
+	   	</content>
+	   	<content>
+	   	    <text>Currently developing an Android app and possibly will put it on the market at the end of February.</text>
+	   	    <date>07/02/12</date>
+	   	</content>
+	   	<content>
+	   	    <text>CV updated!</text>
+	   	    <links>
+	   	        <a string='CV'>
+	   	            <href>../files/CV.pdf</href>
+	   	            <target>_blank</target>
+	   	        </a>
+	   	    </links>
+	   	    <date>9 Dec</date>
+	   	</content>
+	   	<content>
+	   	    <text>Planned a Europe trip for the summer!Start on 21 June!</text>
+	   	    <date>11 June</date>
+	   	    <image src="../files/images/France-Italy-Spain.png">
+	   	        <alt>2011 summer trip</alt>
+	   	        <width>95%</width>
+			</image>
+	   	</content>
+    </page>
+    
+    
+    <page name="projects">
+        <navigation>Projects</navigation>
+        <project>
+            <title>Shawn English Club (肖恩英语俱乐部)Website</title>
+            <shortened>Shawn English Club</shortened>
+            <id>se_web</id>
+            <url>http://shawnenglishclub.com/</url>
+            <description>
+                <text>An alumni of the University of Southampton has set up an English club in Beijing. Because I have a lot of free time before I go to the US, I decided to make a website for him. </text>
+            </description>
+        </project>
+        <project>
+            <title>Tweets Proxy</title>
+            <shortened>Tweets Proxy</shortened>
+            <id>tweets_proxy</id>
+            <url>http://tweets-proxy.herokuapp.com/</url>
+            <description>
+                <text>A tweets proxy was created. In places where Twitter is blocked, people can search for Tweets from this website. Tweets are fetched from the server and sent to client through Socket IO. </text>
+                <links>
+                    <a string="Socket IO">
+                        <href>http://socket.io/</href>
+                        <target>_blank</target>
+                    </a>
+                </links>
+            </description>
+        </project>
+        <project>
+            <title>Final year project - Route recording and planning web application</title>
+            <shortened>Routes</shortened>
+            <id>proj_3rd</id>
+            <url>http://routes.donglinpu.me</url>
+            <description>
+                <text>My third year project is to develop a location based web application that helps people share their travel experiences and plan their travel routes. The problem I have found is that people share their travelling photos, check-ins and status updates on social networks but there is not a good way to link these items together. Another problem is with trip planning. Most travel planning websites recommend places base on the opinions of majority of users not on their friends. Therefore, this application will allow users to plan their trip based on the routes of their friends.</text>
+                <text>This application is hosted on Google App Engine. The code for the project can be found on my Github repository. You can read the final report for more details of the application. </text>
+				<links>
+	                <a string="location based web application that helps people share and plan their travel route">
+	                    <href>http://routes.donglinpu.me</href>
+	                    <target>_blank</target>
+					</a>
+					<a string="progress report">
+					    <href>../files/3yp/3rd_year_proj_progress_report.pdf</href>
+	                    <target>_blank</target>
+					</a>
+					<a string="my Github repository">
+					    <href>https://github.com/Dongminator/</href>
+	                    <target>_blank</target>
+					</a>
+					<a string="final report">
+					    <href>../files/3yp/3rd_year_proj_final_report.pdf</href>
+	                    <target>_blank</target>
+					</a>
+				</links>
+				<image>./files/images/routes01.png</image>
+				<image>./files/images/routes02.png</image>
+				<image>./files/images/routes03.png</image>
+            </description>
+        </project>
+        <project>
+            <title>My personal website</title>
+            <id>proj_pw</id>
+            <shortened>Personal Website</shortened>
+            <url>http://donglinpu.me</url>
+            <description>
+                <text>The original website was pure HTML and CSS. As a result, many contents are duplicated, e.g. navigation side bar and it is difficult to add another section i.e. a section appears in navigation bar. Also, I want my website to be in both Chinese and English. Therefore, on 17th/18th Feb 2013, I rewrote my website in Javascript and deployed it on Heroku (I used 000webhost before).</text>
+                <text>Now, all content e.g. news, education, experience are put in a XML file and my Javascript will iterate through all elements and put the content on the page. This is also convenient for multi language. If you have developed Android app, you will know that all strings have IDs. The same string for different language shares the same ID. You have one string XML file for each language. That's what I want to achieve. The code can be viewed on my Github.</text>
+                <links>
+	                <a string="my Github">
+	                    <href>https://github.com/Dongminator/</href>
+	                    <target>_blank</target>
+					</a>
+				</links>
+            </description>
+        </project>
+        <project>
+            <title>CV management tool</title>
+            <id>comp3001</id>
+            <shortened>CV management tool</shortened>
+            <url>https://comp3001-team-f.appspot.com/</url>
+            <description>
+                <text>This is the second coursework for COMP3001 Scripting Language module. The problem behind this project it that when people/students apply for jobs, they may apply for more than one company. Thus, the content between each CV may be slightly different. As a result, there are many versions of CVs created. It is difficult to maintain as if one wants to change to add some content, they have to do this to all the CVs.</text>
+                <text>Therefore, we developed this application for users to centralize the CV content. They can easily add, edit and remove content to each CV. They can export CVs to PDF online.</text>
+                <text>I came up with this idea and worked on the Python backend. My main contribution was to write the functions for storing and retrieving data from database. Also, I made the presentation and presented this application to our lecturers. The code is not on Github because we haven't got the module marks back. This app is hosted on Google App Engine.</text>
+                <links>
+	                <a string="COMP3001 Scripting Language module">
+	                    <href>http://www.ecs.soton.ac.uk/module/COMP3001</href>
+	                    <target>_blank</target>
+					</a>
+					<a string="presentation">
+					    <href>https://docs.google.com/presentation/d/1BxGc06r1hDLG5ZYkGbPJ_wY1T2NTPVzmCrIDKEKc2yM/edit?usp=sharing</href>
+	                    <target>_blank</target>
+					</a>
+					<a string="hosted on Google App Engine">
+					    <href>https://comp3001-team-f.appspot.com/</href>
+	                    <target>_blank</target>
+					</a>
+				</links>
+            </description>
+        </project>
+        <project>
+            <title>Credit Suisse Summer Internship</title>
+            <id>cs_intern</id>
+            <shortened>Credit Suisse Internship</shortened>
+            <description>
+                <text>From June 11th 2012 to July 27th 2012, I did an summer internship at Credit Suisse. Overall, it was an very pleasant internship and I have gained valuable work experiences there.</text>
+                <text>My job was to develop a set of PowerShell scripts to automate system scheduling processes including system rebuild, system wake-up, system shut-down etc. Before the scripts were introduced, the way to rebuild a system or to do any other scheduling tasks was to manually enter computer name and commend on an interface, but batch execution was desirable because Credit Suisse was migrating from Windows XP to Windows 7, thus being able to rebuild a number of systems in 1 line of commend would significantly improve efficiency. Furthermore, being able to filter system by certain criteria would also be helpful. For example, if the support team has scheduled a number of rebuild tasks to be executed during the night and in the following morning they want to find all unsuccessful rebuilds and do something with them, they can use the filtering function of the PowerShell scripts to find the computernames of them and then by using the PowerShell pipeline (|), the output of last commend (i.e. the computernames of unsuccessful rebuild systems) can be piped to the next commend (this could be rebuild, or any commend) as input. So that's what my scripts achieved.</text>
+				<text>People at Credit Suisse are very friendly and helpful. PowerShell was completely new to me at the time but learning it wasn't difficult and whenever I had a problem, they were always keen to help me solve problems or introduce me to experts in those areas.</text>
+                <text>Apart from doing our jobs everyday, we (interns) had all kinds of social and networking events. We had a video conference with the CEO of Credit Suisse and with all interns around the world. The interns from Operation &amp; IT (about 30 people including me) had breakfast with 4 Managing Directors (MD) and it was a great opportunity to ask questions. We had also participated in a sports day which consisted of team-based activities on Inflatable Castle. Last but not lease, we had a pub quiz and a night-out (both mandatory events). </text>
+                <text>In general, I had great experiences at Credit Suisse, learnt a lot about working in a large enterprise and have met a lot of great people.</text>
+            </description>
+        </project>
+        
+        <project>
+            <title>Credit Suisse Android App Competition</title>
+            <id>cs_android</id>
+            <shortened>CS Android App Competition</shortened>
+            <description>
+               <text>In March 2011, Credit Suisse hosted an Android App competition in the Electronics and Computer Science department (ECS) at the University of Southampton. I designed an App that would help users and bank verify the identity of each other won the prize for 1st/2nd year tier. For detailed evolvement of the ideas and the app, you can read my blog article. This page provides a brief description of the event. </text>
+               <text>Any App that related to banking could enter this competition. At the time, I remember being called by my bank and they asked for my date of birth and other questions to confirm my identity. However, there was no way for me to check their identity. Anyone can pretend to be calling from your bank, ask for your date of birth, guess your security question and trick you to give them answers. The App called Communicator allows users and the bank to agree with 2 passcodes before they make the phone call. During the phone call, users can check the identity of the bank by asking one of the passcodes. The App released by the bank can be trusted by users and thus the phone call is genuine. </text>
+               <text>You can download and install the App prototype Communicator.apk. Or read the proposal or the presentation.</text>
+               
+               <links>
+                   <a string="my blog article">
+                       <href>http://donglinpu.blogspot.co.uk/2011/04/credit-suisse-android-application.html</href>
+                       <target>_blank</target>
+				   </a>
+				   <a string="proposal">
+                       <href>../files/Credit Suisse Android App Competition Proposal.pdf</href>
+                       <target>_blank</target>
+				   </a>
+				   <a string="presentation">
+                       <href>../files/Credit Suisse Android App Competiton Presentation.pdf</href>
+                       <target>_blank</target>
+				   </a>
+				   <a string="Communicator.apk">
+                       <href>../files/Communicator.apk</href>
+                       <target>_blank</target>
+				   </a>
+               </links>
+            </description>
+        </project>
+    </page>
+    
+ <!-- 
+    <page name="about">
+        <navigation>About</navigation>
+        <h2>Education</h2>
+        <h2>Interest</h2>
+        
+    </page>
+ -->       
+    
+    <page name="contact">
+        <navigation>Contact</navigation>
+        <h1>Contact Me</h1>
+        <content>
+            <image>
+                <url>../../files/images/emailSize14.jpg</url>
+                <width>282</width>
+                <height>56</height>
+                <alt>email</alt>
+            </image>
+        </content>
+        <content>
+            <text>Blog: http://donglinpu.blogspot.com</text>
+            <links>
+	   	        <a string='http://donglinpu.blogspot.com'>
+	   	            <href>http://donglinpu.blogspot.com</href>
+	   	            <target>_blank</target>
+	   	        </a>
+	   	    </links>
+        </content>
+        <content>
+            <text>Facebook: https://www.facebook.com/DongminatingTheWorld</text>
+            <links>
+	   	        <a string='https://www.facebook.com/DongminatingTheWorld'>
+	   	            <href>https://www.facebook.com/DongminatingTheWorld</href>
+	   	            <target>_blank</target>
+	   	        </a>
+	   	    </links>
+        </content>
+        <content>
+            <text>Twitter: @Dongminating</text>
+            <links>
+	   	        <a string='@Dongminating'>
+	   	            <href>https://twitter.com/dongminating</href>
+	   	            <target>_blank</target>
+	   	        </a>
+	   	    </links>
+        </content>
+        <content>
+            <text>Curriculum Vitae</text>
+            <links>
+	   	        <a string='Curriculum Vitae'>
+	   	            <href>../files/CV.pdf</href>
+	   	            <target>_blank</target>
+	   	        </a>
+	   	    </links>
+	   	    <b>Curriculum Vitae</b>
+        </content>
+        
+    </page>
+    
+</website>

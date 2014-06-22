@@ -1,0 +1,21 @@
+body {
+  padding-top: 70px;
+}
+
+
+#dummy {
+	position: absolute;
+	visibility: hidden;
+	whitespace: nowrap;
+	font-family: serif;
+}
+
+.starter-template {
+	padding: 0px 15px;
+}
+
+.social-networks {
+	padding: 20px 15px;
+	text-align: center;
+}
+

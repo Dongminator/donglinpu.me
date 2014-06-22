@@ -1,0 +1,42 @@
+body {
+  padding-top: 70px;
+}
+
+
+#dummy {
+	position: absolute;
+	visibility: hidden;
+	whitespace: nowrap;
+	font-family: serif;
+}
+
+.starter-template {
+	padding: 0px 15px;
+}
+
+.social-networks {
+	padding: 20px 15px;
+	text-align: center;
+}
+
+
+
+
+#map {
+	width:100%;
+	height:560px;
+	margin-top: 10px;
+}
+
+
+.mapInfoWindowTitle {
+	margin: 0 0 5px 0;
+	padding: 0.2em 0;
+}
+
+.mapInfoWindowP {
+	margin:0;
+	line-height:1.5;
+	font-size:13px;
+}
+
