@@ -33,7 +33,7 @@ function initialize() {
 	addMarker(ligongdaxueP, "KID", "理工大学");// D6
 	addMarker(niaochaoP, "KID", "鸟巢");// D6
 	addMarker(fengtaiP, "KID", "丰台区");// D6
-	addMarker(beidaxinanmenP, "KID", "北大西南门");// D6
+	addMarker(beidaxinanmenP, "KID", "北大西南门");// D6 
 	
 }  
    
