@@ -2,8 +2,6 @@ $(document).ready(function(){
 	populateNavigation();
 });
 
-
-
 var map;
 
 
@@ -25,9 +23,9 @@ function initialize() {
 	
 	var linyedaxueP = new BMap.Point(116.350596,40.006514); // zeng
 	var ligongdaxueP = new BMap.Point(116.323205,39.966781); // mu
-	var niaochaoP = new BMap.Point(116.402131,39.999448); // xigua
-	var fengtaiP = new BMap.Point(116.296889,39.86343);
-	
+	var niaochaoP = new BMap.Point(116.413703,40.009216); // 第五大道 西瓜
+	var fengtaiP = new BMap.Point(116.434919,39.852041); // 宋家庄
+	var beidaxinanmenP = new BMap.Point(116.311991,39.993775); // 北大西南门
 	
 	addMarker(homeP, "BOSS!", "The boss is here!");// D6
 	addMarker(cinemaP, "Cinema", "嘉华国际影城 <br>21:05 明日边缘 <br>00:00 变形金刚4", "cinema");// D6
@@ -35,6 +33,7 @@ function initialize() {
 	addMarker(ligongdaxueP, "KID", "理工大学");// D6
 	addMarker(niaochaoP, "KID", "鸟巢");// D6
 	addMarker(fengtaiP, "KID", "丰台区");// D6
+	addMarker(beidaxinanmenP, "KID", "北大西南门");// D6
 	
 }  
    
@@ -83,9 +82,6 @@ function addMyEventListener (obj, title, description) { // obj should be marker.
 		map.centerAndZoom(this.getPosition(), mapCurrZoom);
 
 	});
-	
-	
-	
 }
 
 window.onload = bm_loadScript;  
