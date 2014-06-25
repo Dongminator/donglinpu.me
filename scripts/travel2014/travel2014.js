@@ -33,6 +33,8 @@ $(document).ready(function(){
         // refresh current page
         location.reload();
     });
+	
+	populateNavigation();
 });
 
 

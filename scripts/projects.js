@@ -1,4 +1,3 @@
-var pages;
 var projects;
 
 var proj_id; // get proj_id from GET request
@@ -6,8 +5,9 @@ var proj_ids = new Array();
 
 $(document).ready(function(){
 	proj_id = window.location.search;
-	
+
 	populateNavigation();
+	populateLeftNav();
 	
 	// display project. proj_id = "?proj=3rd"
 	if (proj_id != "") { 
@@ -57,34 +57,7 @@ $(document).ready(function(){
 //	home();
 });
 
-
-function populateNavigation () {
-	var xmlhttp;
-	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-	} else {// code for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.open("GET","scripts/content.xml",false);
-	xmlhttp.send();
-	var xmlDoc=xmlhttp.responseXML;
-	
-	pages = xmlDoc.getElementsByTagName('page');
-	
-	projects = pages[1].getElementsByTagName('project');
-	
-	// Populate navigation #proj-nav.
-	for (var i = 0; i < projects.length; i++) {
-		var project_id = projects[i].getElementsByTagName('id')[0].textContent;
-		var project_alias = projects[i].getElementsByTagName('shortened')[0].textContent;
-		var a = $('<a></a>').attr('href', '/projects?proj=' + project_id).text(project_alias);
-		var li = $('<li></li>').append(a).appendTo("#proj_dropdown");
-		
-//		<li>
-//			<a href="a.com">a</a>
-//		</li>
-	}
-	
+function populateLeftNav () {
 	for (var i = 0; i < projects.length; i++) {
 		var project_id = projects[i].getElementsByTagName('id')[0].textContent;
 		proj_ids.push(project_id);
@@ -93,7 +66,6 @@ function populateNavigation () {
 		$("#proj-nav").children().append(a);
 //		<a href="#" class="list-group-item active">Proj1</a>
 	}
-	
 }
 
 function displayProject (order) {

@@ -33,6 +33,15 @@ app.get('/travel2014', function(req, res){
 	});
 });
 
+//Travel 2014 page
+app.get('/ditu', function(req, res){
+	fs.readFile('ditu.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
 //Routes CN
 app.get('/routes-cn', function(req, res){
 	fs.readFile('routes-cn.html', function(err, file) {
