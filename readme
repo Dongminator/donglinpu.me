@@ -1,0 +1,6 @@
+git clone http://github.com/Dongminator/donglinpu.me.git
+
+npm install
+
+node web.js
+
