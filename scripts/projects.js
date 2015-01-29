@@ -30,8 +30,8 @@ $(document).ready(function(){
 		// else display nyu application home page. 
 		// Add Home page here so when going to project pages, they do not load hometext first, then remove, then add project description.
 	} else { // display home page
-		var hometext = "<p><b>Area of Interest:</b> Software Engineering</p>"
-		+ "<p><b>Goals and Objectives:</b> to master software engineering techniques. Be able to produce high quality software and applications individually or in a team.</p>"
+		var hometext = "<p><b>Area of Interest:</b> Web Development, Software Development</p>"
+		+ "<p><b>Goals and Objectives:</b> To master software engineering techniques. Be able to produce high quality software and applications individually or in a team.</p>"
 		+ "<p>My past projects and coursework are listed on the left.</p>";
 		
 		$('#proj-main').html(hometext);
