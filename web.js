@@ -86,6 +86,14 @@ app.get('/t', function(req, res){
 	res.end();
 });
 
+app.get('/msopenhack2015', function(req, res){
+	res.writeHead(302, {
+		'Location': 'http://ftd.herokuapp.com'
+			//add other headers here...
+	});
+	res.end();
+});
+
 
 var port = process.env.PORT || 3000;
 app.listen(port);
