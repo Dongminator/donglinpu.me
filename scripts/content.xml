@@ -113,6 +113,31 @@
     <page name="projects">
         <navigation>Projects</navigation>
         <project>
+            <title>Microsoft Open Hack 2015</title>
+            <shortened>OpenHack2015</shortened>
+            <id>msopenhack2015</id>
+            <url>http://ftd.herokuapp.com/</url>
+            <description>
+                <text>During UCS vs UCLA Microsoft Open Hack 2015, three of my classmates and I developed an web application which shares your status updates on Weibo (one of the most popular social network in China), Facebook and Twitter. This web app automatically translates your English updates to Chinese and posts them on Weibo in Chineses and on Facebook and Twitter in English. In addition, on this web app, you can drag and drop any statuses from any social network to any other social network. The system will post the dragged update to the social network you drop it.</text>
+				<text>My tasks were writing the server in NodeJS, learning and applying Weibo and Twitter APIs, and using them to communicate with Weibo and Twitter APIs and send JSON responses to the frontend. </text>
+				<text>The code is available on Github.</text>
+				<text>Note: the app is not fully functional because the app on Facebook and Weibo are not published, but you may see Weibo and Twitter updates. Those are from testing accounts. </text>
+				<links>
+                    <a string="an web application">
+                        <href>http://ftd.herokuapp.com/</href>
+                        <target>_blank</target>
+                    </a><a string="UCS vs UCLA Microsoft Open Hack 2015">
+                        <href>https://www.facebook.com/events/1527522934181680/</href>
+                        <target>_blank</target>
+                    </a>
+                    <a string="Github">
+                        <href>https://github.com/Rgnrtn/ftd/</href>
+                        <target>_blank</target>
+                    </a>
+                </links>
+            </description>
+        </project>
+        <project>
             <title>Google Map Multiple Waypoints Extension</title>
             <shortened>Google Map Waypoints</shortened>
             <id>gmmwe</id>
