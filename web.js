@@ -1,6 +1,11 @@
 var express = require('express');
 var fs = require('fs');
+var http = require('http');
+var https = require('https');
 var app = express();
+
+var server = http.createServer(app);
+
 
 app.use('/files', express.static('files'));
 app.use('/scripts', express.static('scripts'));
@@ -95,5 +100,46 @@ app.get('/msopenhack2015', function(req, res){
 });
 
 
+/*
+ * The following routes are for the USC Web Registration Mobile App competition
+ */
+app.get('/webreg', function(request, response) {
+	var options = {
+			hostname: 'petri.esd.usc.edu',
+			path: '/socAPI/Schools/',
+			method: 'GET'
+	};
+	
+	var body = "";
+	var req = http.request(options, function(res) { // res is IncomingMessage help: http://nodejs.org/api/http.html#http_http_incomingmessage
+		// res.statusCode
+		res.setEncoding("utf8");
+		res.on('data', function (chunk) {// this happens multiple times! So need to use 'body' to collect all data
+			body += chunk;
+		});
+		
+		var data="";
+		res.on('end', function () { // when we have full 'body', convert to JSON and send back to client.
+			try {
+				data = JSON.parse(body);
+		    } catch (er) {
+		    	// something wrong with JSON
+		    	response.statusCode = 400;
+		    	return response.end('error: ' + er.message);
+		    }
+
+		    // redirect to app home	   
+		    response.setHeader("Access-Control-Allow-Origin", '*');
+		    response.send(data);
+		    response.end();
+		  });
+	});
+	req.end();
+
+});
+
+
+
+
 var port = process.env.PORT || 3000;
-app.listen(port);
+server.listen(port);
