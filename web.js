@@ -121,11 +121,10 @@ app.get('/webreg/Courses/:term/*', function(request, response) {
 	var queryStringArray = queryString.split("/");
 	var option = queryStringArray[queryStringArray.length-1];
 	
-	var hostname = "petri.esd.usc.edu";
 	var path = "/socAPI/Courses/" + term + "/" + option;
-	
+	console.log(path);
 	var options = {
-			hostname: hostname,
+			hostname: petri.esd.usc.edu,
 			path: path,
 			method: 'GET'
 	};
@@ -134,15 +133,19 @@ app.get('/webreg/Courses/:term/*', function(request, response) {
 });
 
 /*
- * 5. School - http://petri.esd.usc.edu/socAPI/Schools/  - > http://localhost:3000/webreg/Schools
+ * 5. School - http://petri.esd.usc.edu/socAPI/Schools/  - > http://localhost:3000/webreg/Schools/
  * 6. Department - http://petri.esd.usc.edu/socAPI/Schools/[DEPARTMENT_CODE] -> http://localhost:3000/webreg/Schools/BUAD
  */
-app.get('/webreg/Schools/:dept', function(request, response) {
-	var dept = request.params.dept;
-	
+app.get('/webreg/Schools/*', function(request, response) {
+	var queryString = request.url;
+	var queryStringArray = queryString.split("/");
+	var dept = queryStringArray[queryStringArray.length-1];
+
+	var path = "/socAPI/Schools/" + dept;
+	console.log(path);
 	var options = {
-			hostname: 'petri.esd.usc.edu',
-			path: '/socAPI/Schools/' + dept,
+			hostname: "petri.esd.usc.edu",
+			path: path,
 			method: 'GET'
 	};
 	
@@ -155,9 +158,9 @@ app.get('/webreg/Schools/:dept', function(request, response) {
  * 4. Session - http://petri.esd.usc.edu/socAPI/Sessions/[RNR_SESSION_ID] - > http://localhost:3000/webreg/Sessions/27
  */
 app.get('/webreg/:arg1/:arg2', function(request, response) {
-	console.log("using arg1, arg2 route: arg1:" + arg1 + " arg2:" + arg2);
 	var arg1 = request.params.arg1;
 	var arg2 = request.params.arg2;
+	console.log("using arg1, arg2 route: arg1:" + arg1 + " arg2:" + arg2);
 	
 	var hostname = "petri.esd.usc.edu";
 	var path = "/socAPI/" + arg1 + "/" + arg2;
