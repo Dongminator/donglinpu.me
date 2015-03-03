@@ -113,6 +113,22 @@
     <page name="projects">
         <navigation>Projects</navigation>
         <project>
+            <title>EasyReg - USC Mobile App Development Contest</title>
+            <shortened>EasyReg</shortened>
+            <id>EasyReg</id>
+            <url>http://www.donglinpu.me/easyreg</url>
+            <description>
+                <text>In Feb 2015, our team participated in the USC Mobile App Development Competition for the USC web registration system. Read the details here.</text>
+				<links>
+                    <a string="Read the details here.">
+                        <href>http://www.donglinpu.me/easyreg</href>
+                        <target>_blank</target>
+                    </a>
+                </links>
+            </description>
+        </project>
+        
+        <project>
             <title>Microsoft Open Hack 2015</title>
             <shortened>OpenHack2015</shortened>
             <id>msopenhack2015</id>

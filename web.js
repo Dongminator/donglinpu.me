@@ -29,6 +29,15 @@ app.get('/projects', function(req, res){
 	});
 });
 
+//EasyReg project page
+app.get('/easyreg', function(req, res){
+	fs.readFile('easyreg.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
 //Travel 2014 page
 app.get('/travel2014', function(req, res){
 	fs.readFile('travel2014.html', function(err, file) {
@@ -59,6 +68,14 @@ app.get('/routes-cn', function(req, res){
 //NYU application 
 app.get('/nyu', function(req, res){
 	fs.readFile('nyu.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+app.get('/webregTest', function(req, res) {
+	fs.readFile('webregTest.html', function(err, file) {
 		res.setHeader('Content-Type', 'text/html');
 		res.setHeader('Content-Length', file.length);
 		res.end(file);
@@ -98,8 +115,6 @@ app.get('/msopenhack2015', function(req, res){
 	});
 	res.end();
 });
-
-
 
 
 
