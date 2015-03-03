@@ -30,7 +30,7 @@ app.get('/projects', function(req, res){
 });
 
 //EasyReg project page
-app.get('/easyreg', function(req, res){
+app.get('/easyreg*', function(req, res){
 	fs.readFile('easyreg.html', function(err, file) {
 		res.setHeader('Content-Type', 'text/html');
 		res.setHeader('Content-Length', file.length);
