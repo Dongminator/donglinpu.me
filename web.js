@@ -30,8 +30,44 @@ app.get('/projects', function(req, res){
 });
 
 //EasyReg project page
-app.get('/easyreg*', function(req, res){
+app.get('/easyreg', function(req, res){
 	fs.readFile('easyreg.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+//EasyReg Nan Ke
+app.get('/easyreg/nanke', function(req, res){
+	fs.readFile('easyreg-team.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+//EasyReg Zeyu Luo
+app.get('/easyreg/zeyuluo', function(req, res){
+	fs.readFile('easyreg-team.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+//EasyReg Zhiqi Liang
+app.get('/easyreg/zhiqiliang', function(req, res){
+	fs.readFile('easyreg-team.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+//EasyReg Junyan Jiang
+app.get('/easyreg/junyanjiang', function(req, res){
+	fs.readFile('easyreg-team.html', function(err, file) {
 		res.setHeader('Content-Type', 'text/html');
 		res.setHeader('Content-Length', file.length);
 		res.end(file);

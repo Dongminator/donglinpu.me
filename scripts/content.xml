@@ -122,7 +122,6 @@
 				<links>
                     <a string="Read the details here.">
                         <href>http://www.donglinpu.me/easyreg</href>
-                        <target>_blank</target>
                     </a>
                 </links>
             </description>
