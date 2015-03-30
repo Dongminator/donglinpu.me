@@ -1,0 +1,158 @@
+.some-class {
+  color: #428bca;
+}
+.some-background {
+  background: #428bca;
+}
+.some-sidebar {
+  background: #428bca;
+}
+.demo-var {
+  color: #8bc3ed;
+}
+.demo-var-val {
+  color: #2aa198;
+}
+.demo-selector {
+  color: #284a80;
+}
+/*
+ * Mixins as Functions demo buttons
+ */
+.demo-btn-cardinal {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 25px;
+  background: #990000;
+  box-shadow: 0px 3px 0px #330000;
+}
+.demo-btn-cardinal:active {
+  box-shadow: 0px 1px 0px #330000;
+  position: relative;
+  top: 2px;
+}
+.demo-btn-gold {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 25px;
+  background: #ffcc00;
+  box-shadow: 0px 3px 0px #997a00;
+}
+.demo-btn-gold:active {
+  box-shadow: 0px 1px 0px #997a00;
+  position: relative;
+  top: 2px;
+}
+.demo-btn-dark-grey {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 25px;
+  background: #777777;
+  box-shadow: 0px 3px 0px #444444;
+}
+.demo-btn-dark-grey:active {
+  box-shadow: 0px 1px 0px #444444;
+  position: relative;
+  top: 2px;
+}
+.demo-btn-light-grey {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 25px;
+  background: #cccccc;
+  box-shadow: 0px 3px 0px #999999;
+}
+.demo-btn-light-grey:active {
+  box-shadow: 0px 1px 0px #999999;
+  position: relative;
+  top: 2px;
+}
+/*
+ * Mixin Guards demo buttons
+ * Depending the lightness of the button background color, change text color. 
+ */
+.demo-btn-cardinal-with-guard {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 25px;
+  background: #990000;
+  box-shadow: 0px 3px 0px #330000;
+  color: white;
+}
+.demo-btn-cardinal-with-guard:active {
+  box-shadow: 0px 1px 0px #330000;
+  position: relative;
+  top: 2px;
+}
+.demo-btn-gold-with-guard {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 25px;
+  background: #ffcc00;
+  box-shadow: 0px 3px 0px #997a00;
+  color: black;
+}
+.demo-btn-gold-with-guard:active {
+  box-shadow: 0px 1px 0px #997a00;
+  position: relative;
+  top: 2px;
+}
+.demo-btn-dark-grey-with-guard {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 25px;
+  background: #777777;
+  box-shadow: 0px 3px 0px #444444;
+  color: white;
+}
+.demo-btn-dark-grey-with-guard:active {
+  box-shadow: 0px 1px 0px #444444;
+  position: relative;
+  top: 2px;
+}
+.demo-btn-light-grey-with-guard {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 25px;
+  background: #cccccc;
+  box-shadow: 0px 3px 0px #999999;
+  color: black;
+}
+.demo-btn-light-grey-with-guard:active {
+  box-shadow: 0px 1px 0px #999999;
+  position: relative;
+  top: 2px;
+}
+body {
+  padding-top: 50px;
+}
+.left-div::before {
+  content: "Less";
+}
+.right-div::before {
+  content: "CSS";
+}
