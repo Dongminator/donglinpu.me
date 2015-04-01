@@ -35,8 +35,7 @@ app.get('/lessDemo', function(req, res){
 			return console.log(err);
 		}
 		
-		less.render(data)
-		.then(function(output) {
+		less.render(data, function(){
 			
 			fs.writeFile("scripts/css/lessDemo.css", output.css, function(err) {
 			    if(err) {
@@ -51,9 +50,7 @@ app.get('/lessDemo', function(req, res){
 				});
 			    
 			}); 
-	    },
-	    function(error) {
-	    });
+		});
 	});
 });
 
