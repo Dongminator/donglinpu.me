@@ -20,22 +20,6 @@
 	background: @some-color;
 }
 
-// the actual CSS
-@demo-var-color: #2aa198 + #612255;
-@demo-var-val-color: #2aa198;
-@demo-selector-color: #284a80;
-.demo-var {
-	color: @demo-var-color;
-}
-
-.demo-var-val {
-	color: @demo-var-val-color;
-}
-
-.demo-selector {
-	color: @demo-selector-color;
-}
-
 /*
  * Mixins as Functions demo buttons
  */
@@ -113,32 +97,31 @@
 // DEMO NEXT SECTION
 // Just like normal CSS properties
 body {
-	padding-top: 50px; // make space for navbar
+	margin: 0px;
+}
+.demo {
+	padding-top: 10px; // make space for navbar
 //	background: linear-gradient(to bottom, @usc-dark-grey, @usc-light-grey); // dark grey to light grey from top to bottom
 }
-//
-//// navbar
-//.less-navbar {
-//	background: linear-gradient(to right, @usc-cardinal, @usc-gold); // navbar from cardinal to gold from left to right
-//	border-color: @usc-dark-grey; // border color
-//}
-//
-//// change header colors
-//h1, h2, h3, h4, h5 {
-//	color: @usc-cardinal;
-//}
-//
-//// change paragraph colors
-//p {
-//	color: @usc-gold;
-//}
 
-// DEMO NEXT SECTION
-.left-div::before { 
-    content: "Less";
+// navbar
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to right, @usc-cardinal, @usc-gold); // navbar from cardinal to gold from left to right
 }
 
-.right-div::before { 
-    content: "CSS";
+// change header colors
+h1, h2, h3, h4, h5 {
+	color: @usc-cardinal;
 }
+
+// change paragraph colors
+p {
+	color: @usc-gold;
+}
+
 

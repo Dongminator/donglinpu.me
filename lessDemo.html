@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- ensure proper rendering and touch zooming on phone -->
+	
+    <title>Less demo by Donglin Pu</title>
+	<link href="./scripts/css/lessDemo.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="navbar">
+		<p>This is the navigation bar. This bar will be fixed on top.</p>
+	</div>    
+	
+	<div class="sidebar">
+		<p>This is a side menu. This will be fixed on the left.</p>
+	</div>
+			
+	<!-- DIV Demo scenario: variable, mixin,  -->
+	<div class="demo">
+		<div>
+			<h1>Buttons with shared properties but different color:</h1>
+			<div class="function-buttons-demo">
+				<buton class="demo-btn-cardinal">Cardinal</buton>
+				<buton class="demo-btn-gold">Gold</buton>
+				<buton class="demo-btn-dark-grey">Dark grey</buton>
+				<buton class="demo-btn-light-grey">Light grey</buton>
+			</div>
+			 
+			 <h1>Same buttons but using Less mixin guard and built-in lightness() function:</h1>
+			<div class="with-guards-buttons-demo">
+				<buton class="demo-btn-cardinal-with-guard">Cardinal</buton>
+				<buton class="demo-btn-gold-with-guard">Gold</buton>
+				<buton class="demo-btn-dark-grey-with-guard">Dark grey</buton>
+				<buton class="demo-btn-light-grey-with-guard">Light grey</buton>
+			</div>
+		</div>
+		
+	</div>
+	<!-- End of DIV Demo scenario: variable, mixin,  -->
+			
+</body>
+</html>

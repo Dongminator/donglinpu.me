@@ -29,6 +29,35 @@ app.get('/less', function(req, res){
 	});
 });
 
+app.get('/lessDemo', function(req, res){
+	fs.readFile('scripts/css/lessDemo.less', 'utf8', function (err,data) {
+		if (err) {
+			return console.log(err);
+		}
+		
+		less.render(data)
+		.then(function(output) {
+			
+			fs.writeFile("scripts/css/lessDemo.css", output.css, function(err) {
+			    if(err) {
+			        return console.log(err);
+			    }
+			    
+			    // After CSS is compiled, output less.html
+			    fs.readFile('lessDemo.html', function(err, file) {
+					res.setHeader('Content-Type', 'text/html');
+					res.setHeader('Content-Length', file.length);
+					res.end(file);
+				});
+			    
+			}); 
+	    },
+	    function(error) {
+	    });
+	});
+});
+
+
 //Projects page
 app.get('/projects', function(req, res){
 	fs.readFile('projects.html', function(err, file) {

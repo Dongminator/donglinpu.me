@@ -19,3 +19,31 @@ body {
 }
 
 
+/*
+ * CSS for less.html
+ */
+.left-div::before { 
+    content: "Less";
+}
+
+.right-div::before { 
+    content: "CSS";
+}
+.some-class {
+  color: #428bca;
+}
+.some-background {
+  background: #428bca;
+}
+.some-sidebar {
+  background: #428bca;
+}
+.demo-var {
+  color: #8bc3ed;
+}
+.demo-var-val {
+  color: #2aa198;
+}
+.demo-selector {
+  color: #284a80;
+}

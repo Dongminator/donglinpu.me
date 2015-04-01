@@ -7,15 +7,6 @@
 .some-sidebar {
   background: #428bca;
 }
-.demo-var {
-  color: #8bc3ed;
-}
-.demo-var-val {
-  color: #2aa198;
-}
-.demo-selector {
-  color: #284a80;
-}
 /*
  * Mixins as Functions demo buttons
  */
@@ -148,11 +139,25 @@
   top: 2px;
 }
 body {
-  padding-top: 50px;
+  margin: 0px;
 }
-.left-div::before {
-  content: "Less";
+.demo {
+  padding-top: 10px;
 }
-.right-div::before {
-  content: "CSS";
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to right, #990000, #ffcc00);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #990000;
+}
+p {
+  color: #ffcc00;
 }

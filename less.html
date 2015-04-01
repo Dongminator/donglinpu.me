@@ -7,7 +7,7 @@
     <title>Donglin Pu - less</title>
     <!-- Bootstrap core CSS -->
     <link href="./scripts/Bootstrap/css/bootstrap.css" rel="stylesheet">
-	<link href="./scripts/css/lessDemo.css" rel="stylesheet">
+	<link href="./scripts/css/main.css" rel="stylesheet">
 
 	<script src="./scripts/jquery-1.11.0.min.js"></script>
 	
@@ -32,16 +32,15 @@
     </div>
     
     <div class="container">
-		<div class="starter-template">
 			<!-- DIV: what is Less -->
-			<div>
+			<div class="row">
 				<h1>What is Less?</h1>
 				<p><span data-toggle="tooltip" data-placement="auto right" title="Less adds many features on top of CSS. Then it is compiled to CSS.">Less is a pre-processor for CSS.</span></p>
 			</div>
 			<!-- End of DIV: what is Less -->
 			
 			<!-- DIV: Why need Less, what are the current problems -->
-			<div>
+			<div class="row">
 				<h1>Why need Less?</h1>
 				<p>Variables: In CSS, a lot of information is repeated. For example, the same color on various places. When developers want to change them, they have to change all of them. It would be great if we can use variables in CSS. </p>
 				<p>Mixins: Same set of CSS properties are repeated in different places. Woud be great if we can group them together.</p>
@@ -251,7 +250,7 @@
 			<!-- End of DIV: How do Less solve problems -->
 			
 			<!-- DIV: How to use Less -->
-			<div>
+			<div class="row">
 				<h1>How to use Less</h1>
 				<p>Command line: install Less compiler (npm install less -g), compile .less files to .css files.</p>
 				<p>Frontend: use less.js, but not recommended.</p>
@@ -262,31 +261,14 @@
 			
 			
 			<!-- DIV Demo scenario: variable, mixin,  -->
-			<div>
-				<h1>Demo</h1>
-				<div class="function-buttons-demo">
-				<p>
-				    <buton class="demo-btn-cardinal">Cardinal</buton>
-				    <buton class="demo-btn-gold">Gold</buton>
-				    <buton class="demo-btn-dark-grey">Dark grey</buton>
-				    <buton class="demo-btn-light-grey">Light grey</buton>
-				    </p>
-			    </div>
-			    <div class="with-guards-buttons-demo">
-			    <p>
-				    <buton class="demo-btn-cardinal-with-guard">Cardinal</buton>
-				    <buton class="demo-btn-gold-with-guard">Gold</buton>
-				    <buton class="demo-btn-dark-grey-with-guard">Dark grey</buton>
-				    <buton class="demo-btn-light-grey-with-guard">Light grey</buton>
-				    </p>
-			    </div>
-			    
+			<div class="row">
+				<h1><a href="lessDemo">Demo</a></h1>
 			</div>
 			<!-- End of DIV Demo scenario: variable, mixin,  -->
 			
 			<!-- https://www.urbaninsight.com/2012/04/12/ten-reasons-you-should-be-using-css-preprocessor -->
 			<!-- DIV Less Pros & Cons -->
-			<div>
+			<div class="row">
 				<h1>Less Pros & Cons</h1>
 				<p>less pain to work with CSS; reuse properties, patterns; css less repetition; more like HTML structure</p>
 				
@@ -297,7 +279,7 @@
 			
 			<!-- DIV Compare Less and Sass: installation, support, feature -->
 			<!-- https://css-tricks.com/sass-vs-less/ -->
-			<div>
+			<div class="row">
 				<h1>Compare Less, Sass and Stylus</h1>
 				<p>Less: </p>
 				<p>Sass: if/then/else, for, while, each loop; </p>
@@ -312,7 +294,6 @@
 			
 			<!-- Reference -->
 			
-		</div>
     </div>
     <!-- /.container -->
 	
