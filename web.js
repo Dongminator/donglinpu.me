@@ -35,8 +35,7 @@ app.get('/lessDemo', function(req, res){
 			return console.log(err);
 		}
 		
-		less.render(data, function(){
-			
+		less.render(data, function(error, output){
 			fs.writeFile("scripts/css/lessDemo.css", output.css, function(err) {
 			    if(err) {
 			        return console.log(err);
