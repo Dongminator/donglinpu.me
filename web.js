@@ -3,6 +3,7 @@ var fs = require('fs');
 var http = require('http');
 var https = require('https');
 var app = express();
+var less = require('less');
 
 var server = http.createServer(app);
 
@@ -14,6 +15,14 @@ app.use('/blog', express.static('blog'));
 
 app.get('/', function(req, res){
 	fs.readFile('index.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+app.get('/less', function(req, res){
+	fs.readFile('less.html', function(err, file) {
 		res.setHeader('Content-Type', 'text/html');
 		res.setHeader('Content-Length', file.length);
 		res.end(file);

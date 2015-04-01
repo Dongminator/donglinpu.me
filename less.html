@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- ensure proper rendering and touch zooming on phone -->
+	
+    <title>Donglin Pu - less</title>
+    <!-- Bootstrap core CSS -->
+    <link href="./scripts/Bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="./scripts/css/lessDemo.css" rel="stylesheet">
+
+	<script src="./scripts/jquery-1.11.0.min.js"></script>
+	
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top less-navbar" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+				</button>
+          		<a class="navbar-brand" href="http://donglinpu.me">Donglin Pu</a>
+        	</div>
+        	<div class="collapse navbar-collapse">
+         		 <ul class="nav navbar-nav navbar-right">
+         		 	<li><a href="" target="_blank">Download PDF</a></li>
+         		 </ul>
+       		</div><!--/.nav-collapse -->
+      	</div>
+    </div>
+    
+    <div class="container">
+		<div class="starter-template">
+			<!-- DIV: what is Less -->
+			<div>
+				<h1>What is Less?</h1>
+				<p><span data-toggle="tooltip" data-placement="auto right" title="Less adds many features on top of CSS. Then it is compiled to CSS.">Less is a pre-processor for CSS.</span></p>
+			</div>
+			<!-- End of DIV: what is Less -->
+			
+			<!-- DIV: Why need Less, what are the current problems -->
+			<div>
+				<h1>Why need Less?</h1>
+				<p>Variables: In CSS, a lot of information is repeated. For example, the same color on various places. When developers want to change them, they have to change all of them. It would be great if we can use variables in CSS. </p>
+				<p>Mixins: Same set of CSS properties are repeated in different places. Woud be great if we can group them together.</p>
+				
+				<p>Nested rules: makes it look similar to HTML structure. </p>
+				<p>Operators and functions: color: #5B83AD + #111 = #6c94be</p>
+				<p>Namespaces for grouping variables and mixins: </p>
+			</div>
+			<!-- End of DIV: Why need Less, what are the current problems -->
+			
+			
+			<!-- DIV: How do Less solve problems -->
+			<div class="row">
+				<h1>How does Less solve these problems?</h1>
+				<div>
+					<h2>Variables</h2>
+					<div class="left-div col-sm-6">
+						<div class="code-wrapped">
+<pre>
+<span class="demo-var">@some-color</span>: <span class="demo-var-val">#428bca</span>; // only need to change this 
+
+<span class="demo-selector">.some-class</span> {
+  color: <span class="demo-var">@some-color</span>;
+}
+
+<span class="demo-selector">.some-background</span> {
+  background: <span class="demo-var">@some-color</span>;
+}
+
+<span class="demo-selector">.some-sidebar</span> {
+  background: <span class="demo-var">@some-color</span>;
+}
+</pre>
+						</div>
+					</div>
+					<div class="right-div col-sm-6">
+						<div class="code-wrapped">
+<pre>
+<span class="demo-selector">.some-class</span> {
+  color: <span class="demo-var-val">#428bca</span>;
+}
+<span class="demo-selector">.some-background</span> {
+  background: <span class="demo-var-val">#428bca</span>;
+}
+<span class="demo-selector">.some-sidebar</span> {
+  background: <span class="demo-var-val">#428bca</span>;
+}
+
+
+
+
+</pre><!-- Note: the empty lines are needed. -->
+						</div>
+					</div>
+				</div>
+				
+				
+				<!-- Mixin demo -->
+				<div>
+					<h2>Mixins</h2>
+					<p>Mixins: multiple properties can be grouped together.</p>
+					<p>Mixins as functions: accept arguments</p>
+					<div class="left-div col-sm-6">
+						<div class="code-wrapped">
+<pre>
+<span class="demo-selector">.demo-btn</span><span data-toggle="tooltip" data-placement="auto top" title="If has (), CSS output will not show this mixin. Otherwise will have a demo-btn class.">()</span> {
+  text-align: <span class="demo-var-val">center</span>; // Center button text
+  cursor: <span class="demo-var-val">pointer</span>; // Show pointer when hover on button
+  padding: <span class="demo-var-val">10px</span>; // 10px padding left, top, right and button
+  border: <span class="demo-var-val">2px solid</span>;
+  border-radius: <span class="demo-var-val">25px</span>;
+}
+<span class="demo-selector">.demo-btn-cardinal</span> {
+  .demo-btn;
+  color: <span class="demo-var-val">@usc-cardinal</span>;
+}
+<span class="demo-selector">.demo-btn-gold</span> {
+  .demo-btn;
+  color: <span class="demo-var-val">@usc-gold</span>;
+}
+
+</pre>
+						</div>
+					</div>
+					<div class="right-div col-sm-6">
+						<div class="code-wrapped">
+<pre>
+<span class="demo-selector">.demo-btn-cardinal</span> {
+  text-align: <span class="demo-var-val">center</span>;
+  cursor: <span class="demo-var-val">pointer</span>;
+  padding: <span class="demo-var-val">10px</span>;
+  border: <span class="demo-var-val">2px solid</span>;
+  border-radius: <span class="demo-var-val">25px</span>;
+  color: <span class="demo-var-val">#990000</span>;
+}
+<span class="demo-selector">.demo-btn-gold</span> {
+  text-align: <span class="demo-var-val">center</span>;
+  cursor: <span class="demo-var-val">pointer</span>;
+  padding: <span class="demo-var-val">10px</span>;
+  border: <span class="demo-var-val">2px solid</span>;
+  border-radius: <span class="demo-var-val">25px</span>;
+  color: <span class="demo-var-val">#ffcc00</span>;
+}
+</pre>
+						</div>
+					</div>
+					
+				</div>
+				<!-- End of Mixin demo -->
+				
+				
+				<!-- Mixin as function demo -->
+				<div>
+					<h2>Mixin as function</h2>
+					<p>Accept arguments</p>
+					<p>Can return values</p>
+					<div class="left-div col-sm-6">
+						<div class="code-wrapped">
+<pre>
+<span class="demo-selector">.demo-btn-builder</span>(<span class="demo-var">@color</span>) {
+  background: <span class="demo-var">@color</span>;
+  box-shadow: <span class="demo-var-val">0px 3px 0px darken(</span><span class="demo-var">@color</span><span class="demo-var-val">, 20%)</span>;
+	
+  &:active {
+    box-shadow: <span class="demo-var-val">0px 1px 0px darken(</span><span class="demo-var">@color</span><span class="demo-var-val">, 20%)</span>;
+    position: <span class="demo-var-val">relative</span>;
+    top: <span class="demo-var-val">2px</span>;
+  }
+}
+
+<span class="demo-selector">.demo-btn-cardinal</span> {
+  <span class="demo-selector">.demo-btn</span>;
+  <span class="demo-selector">.demo-btn-builder(</span><span class="demo-var">@usc-cardinal</span><span class="demo-var-val">)</span>;
+}
+<span class="demo-selector">.demo-btn-gold</span> {
+  <span class="demo-selector">.demo-btn</span>;
+  <span class="demo-selector">.demo-btn-builder(</span><span class="demo-var">@usc-gold</span><span class="demo-var-val">)</span>;
+}
+...
+</pre>
+						</div>
+					</div>
+					<div class="right-div col-sm-6">
+						<div class="code-wrapped">
+<pre>
+<span class="demo-selector">.demo-btn-cardinal</span> {
+  ...
+  background: <span class="demo-var-val">#990000</span>;
+  box-shadow: <span class="demo-var-val">0px 3px 0px #330000</span>;
+}
+<span class="demo-selector">.demo-btn-cardinal:active</span> {
+  box-shadow: <span class="demo-var-val">0px 1px 0px #330000</span>;
+  position: <span class="demo-var-val">relative</span>;
+  top: <span class="demo-var-val">2px</span>;
+}
+<span class="demo-selector">.demo-btn-gold</span> {
+  ...
+  background: <span class="demo-var-val">#ffcc00</span>;
+  box-shadow: <span class="demo-var-val">0px 3px 0px #997a00</span>;
+}
+<span class="demo-selector">.demo-btn-gold:active</span> {
+  box-shadow: <span class="demo-var-val">0px 1px 0px #997a00</span>;
+  position: <span class="demo-var-val">relative</span>;
+  top: <span class="demo-var-val">2px</span>;
+}
+</pre>
+						</div>
+					</div>
+				</div>
+				<!-- End of Mixin as function demo -->
+				
+				
+				
+				<!-- Mixin Guards -->
+				<div>
+					<h2>Mixin Guards</h2>
+					<p>Conditional mixins (functions)</p>
+					<div class="left-div col-sm-6">
+						<div class="code-wrapped">
+<pre>
+.demo-btn-with-guards (@color) when (lightness(@color) >= 50%) {
+  color: black;
+}
+.demo-btn-with-guards (@color) when (lightness(@color) < 50%) {
+  color: white;
+}
+</pre>
+						</div>
+					</div>
+					<div class="left-div col-sm-6">
+						<div class="code-wrapped">
+<pre>
+.demo-btn-cardinal-with-guard {
+  ...
+  color: white;
+}
+.demo-btn-gold-with-guard {
+  ...
+  color: black;
+}
+</pre>
+						</div>
+					</div>
+				</div>
+				<!-- End of Mixin guards -->
+			</div>
+			<!-- End of DIV: How do Less solve problems -->
+			
+			<!-- DIV: How to use Less -->
+			<div>
+				<h1>How to use Less</h1>
+				<p>Command line: install Less compiler (npm install less -g), compile .less files to .css files.</p>
+				<p>Frontend: use less.js, but not recommended.</p>
+				<p>Backend: supported by Node.js, Java, .NET, PHP, Python and Ruby. http://lesscss.org/about/#ports</p>
+			</div>
+			<!-- End of DIV: How to use Less -->
+			
+			
+			
+			<!-- DIV Demo scenario: variable, mixin,  -->
+			<div>
+				<h1>Demo</h1>
+				<div class="function-buttons-demo">
+				<p>
+				    <buton class="demo-btn-cardinal">Cardinal</buton>
+				    <buton class="demo-btn-gold">Gold</buton>
+				    <buton class="demo-btn-dark-grey">Dark grey</buton>
+				    <buton class="demo-btn-light-grey">Light grey</buton>
+				    </p>
+			    </div>
+			    <div class="with-guards-buttons-demo">
+			    <p>
+				    <buton class="demo-btn-cardinal-with-guard">Cardinal</buton>
+				    <buton class="demo-btn-gold-with-guard">Gold</buton>
+				    <buton class="demo-btn-dark-grey-with-guard">Dark grey</buton>
+				    <buton class="demo-btn-light-grey-with-guard">Light grey</buton>
+				    </p>
+			    </div>
+			    
+			</div>
+			<!-- End of DIV Demo scenario: variable, mixin,  -->
+			
+			<!-- https://www.urbaninsight.com/2012/04/12/ten-reasons-you-should-be-using-css-preprocessor -->
+			<!-- DIV Less Pros & Cons -->
+			<div>
+				<h1>Less Pros & Cons</h1>
+				<p>less pain to work with CSS; reuse properties, patterns; css less repetition; more like HTML structure</p>
+				
+				<p>add overhead, complexity; have to learn and compile</p>
+				<p>Need to compole it everytime you make a change.</p>
+			</div>
+			<!-- End of DIV Less Pros & Cons -->
+			
+			<!-- DIV Compare Less and Sass: installation, support, feature -->
+			<!-- https://css-tricks.com/sass-vs-less/ -->
+			<div>
+				<h1>Compare Less, Sass and Stylus</h1>
+				<p>Less: </p>
+				<p>Sass: if/then/else, for, while, each loop; </p>
+				<p>stylus</p>
+			</div>
+			<!-- End of DIV Compare Less and Sass: installation, support, feature -->
+			
+			
+			<!-- !! When use Less -->
+			
+			<!-- !! Should we use? -->
+			
+			<!-- Reference -->
+			
+		</div>
+    </div>
+    <!-- /.container -->
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./scripts/Bootstrap/js/bootstrap.js"></script>
+    <script src="./scripts/js/lessDemo.js"></script>
+  
+</body>
+</html>
