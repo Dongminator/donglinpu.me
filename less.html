@@ -34,8 +34,17 @@
     <div class="container">
 			<!-- DIV: what is Less -->
 			<div class="row">
+				<div class="alert alert-warning" role="alert">
+					<p>Download the <a href="files/csci577b_tech_talk.pdf">presentation on here</a>.</p>
+					<p>It is better to see the <a href="lessDemo" target="_blank">Demo</a> and the <a href="https://github.com/Dongminator/donglinpu.me/blob/master/scripts/css/lessDemo.less" target="_blank">Less code</a> together.</p>
+				</div>
+				
 				<h1>What is Less?</h1>
-				<p><span data-toggle="tooltip" data-placement="auto right" title="Less adds many features on top of CSS. Then it is compiled to CSS.">Less is a pre-processor for CSS.</span></p>
+				<p>Less is a pre-processor for CSS with lots of extra features. Then files written with correct Less syntax are compiled to CSS files.</p>
+				<h3>How to use Less</h3>
+				<p>Command line: install Less compiler (npm install less -g), compile .less files to .css files.</p>
+				<p>Frontend: use less.js, but not recommended.</p>
+				<p>Backend: supported by Node.js, Java, .NET, PHP, Python and Ruby. http://lesscss.org/about/#ports</p>
 			</div>
 			<!-- End of DIV: what is Less -->
 			
@@ -43,11 +52,8 @@
 			<div class="row">
 				<h1>Why need Less?</h1>
 				<p>Variables: In CSS, a lot of information is repeated. For example, the same color on various places. When developers want to change them, they have to change all of them. It would be great if we can use variables in CSS. </p>
-				<p>Mixins: Same set of CSS properties are repeated in different places. Woud be great if we can group them together.</p>
-				
-				<p>Nested rules: makes it look similar to HTML structure. </p>
-				<p>Operators and functions: color: #5B83AD + #111 = #6c94be</p>
-				<p>Namespaces for grouping variables and mixins: </p>
+				<p>Vendor Prefix to work with different browsers e.g. border-radius, transition, linear-gradient …</p>
+				<p>Difficult to read and maintain.</p>
 			</div>
 			<!-- End of DIV: Why need Less, what are the current problems -->
 			
@@ -101,8 +107,8 @@
 				<!-- Mixin demo -->
 				<div>
 					<h2>Mixins</h2>
-					<p>Mixins: multiple properties can be grouped together.</p>
-					<p>Mixins as functions: accept arguments</p>
+					<p>Mixins: group of CSS properties.</p>
+					<p>Nested properties: structure similar to HTML</p>
 					<div class="left-div col-sm-6">
 						<div class="code-wrapped">
 <pre>
@@ -121,7 +127,6 @@
   .demo-btn;
   color: <span class="demo-var-val">@usc-gold</span>;
 }
-
 </pre>
 						</div>
 					</div>
@@ -155,8 +160,7 @@
 				<!-- Mixin as function demo -->
 				<div>
 					<h2>Mixin as function</h2>
-					<p>Accept arguments</p>
-					<p>Can return values</p>
+					<p>Mixins as functions: have parameters, return variables</p>
 					<div class="left-div col-sm-6">
 						<div class="code-wrapped">
 <pre>
@@ -221,11 +225,13 @@
 					<div class="left-div col-sm-6">
 						<div class="code-wrapped">
 <pre>
-.demo-btn-with-guards (@color) when (lightness(@color) >= 50%) {
-  color: black;
+<span class="demo-selector">.demo-btn-with-guards (@color)</span> 
+ when (lightness(@color) >= 50%) {
+  <span class="demo-selector">color</span>: <span class="demo-var-val">black</span>;
 }
-.demo-btn-with-guards (@color) when (lightness(@color) < 50%) {
-  color: white;
+<span class="demo-selector">.demo-btn-with-guards (@color)</span> 
+ when (lightness(@color) < 50%) {
+  <span class="demo-selector">color</span>: <span class="demo-var-val">white</span>;
 }
 </pre>
 						</div>
@@ -233,13 +239,13 @@
 					<div class="left-div col-sm-6">
 						<div class="code-wrapped">
 <pre>
-.demo-btn-cardinal-with-guard {
+<span class="demo-selector">.demo-btn-cardinal-with-guard</span> {
   ...
-  color: white;
+  <span class="demo-selector">color</span>: <span class="demo-var-val">white</span>;
 }
-.demo-btn-gold-with-guard {
+<span class="demo-selector">.demo-btn-gold-with-guard</span> {
   ...
-  color: black;
+  <span class="demo-selector">color</span>: <span class="demo-var-val">black</span>;
 }
 </pre>
 						</div>
@@ -248,16 +254,6 @@
 				<!-- End of Mixin guards -->
 			</div>
 			<!-- End of DIV: How do Less solve problems -->
-			
-			<!-- DIV: How to use Less -->
-			<div class="row">
-				<h1>How to use Less</h1>
-				<p>Command line: install Less compiler (npm install less -g), compile .less files to .css files.</p>
-				<p>Frontend: use less.js, but not recommended.</p>
-				<p>Backend: supported by Node.js, Java, .NET, PHP, Python and Ruby. http://lesscss.org/about/#ports</p>
-			</div>
-			<!-- End of DIV: How to use Less -->
-			
 			
 			
 			<!-- DIV Demo scenario: variable, mixin,  -->
@@ -281,18 +277,30 @@
 			<!-- https://css-tricks.com/sass-vs-less/ -->
 			<div class="row">
 				<h1>Compare Less, Sass and Stylus</h1>
-				<p>Less: </p>
-				<p>Sass: if/then/else, for, while, each loop; </p>
-				<p>stylus</p>
+				<p>Less: .less | @some-color ...</p>
+				<p>Sass: .sass/.scss | $some-color | optional ; and {} | if/then/else, for, while, each loop ...</p>
+				<p>stylus: .styl | some-color | optional {}, : and ; ...</p>
 			</div>
 			<!-- End of DIV Compare Less and Sass: installation, support, feature -->
 			
+			<!-- Should we use? -->
+			<div class="row">
+				<h1>Use Less?</h1>
+				<p>Bootstrap has both Less and Sass versions.</p>
+				<p>Bootstrap already has a lot cool CSS classes.</p>
+				<p>Less is great for making your own CSS.</p>
+			</div>
+			<!-- End of Should we use? -->
 			
-			<!-- !! When use Less -->
-			
-			<!-- !! Should we use? -->
 			
 			<!-- Reference -->
+			<div class="row">
+				<h1>Reference</h1>
+				<p>Bootstrap has both Less and Sass versions.</p>
+				<p>Bootstrap already has a lot cool CSS classes.</p>
+				<p>Less is great for making your own CSS.</p>
+			</div>
+			<!-- End of Reference -->
 			
     </div>
     <!-- /.container -->

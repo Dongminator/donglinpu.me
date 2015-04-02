@@ -1,12 +1,7 @@
-.some-class {
-  color: #428bca;
-}
-.some-background {
-  background: #428bca;
-}
-.some-sidebar {
-  background: #428bca;
-}
+/*
+ * Mixins as Functions demo buttons
+ * Function for building CSS for each buttons
+ */
 .demo-btn-cardinal {
   text-align: center;
   cursor: pointer;
@@ -63,9 +58,6 @@
   position: relative;
   top: 2px;
 }
-/*
- * Mixins as Functions demo buttons
- */
 /*
  * Mixin Guards demo buttons
  * Depending the lightness of the button background color, change TEXT color. 
