@@ -60,7 +60,7 @@
 }
 /*
  * Mixin Guards demo buttons
- * Depending the lightness of the button background color, change TEXT color. 
+ * Depending the lightness of the button background color, change TEXT color.
  */
 .demo-btn-cardinal-with-guard {
   text-align: center;
