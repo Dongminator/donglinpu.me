@@ -1,0 +1,44 @@
+<html>
+
+<head>
+	<script src="./scripts/jquery-1.11.0.min.js"></script>
+</head>
+
+
+<body>
+	<a href="http://www.donglinpu.me/files/CV.pdf">cv</a>
+	
+	<div>
+		<h1>js loaded url</h1>
+		<p>js loaded url will appear here</p>	
+		<a id="url1"></a>
+	</div>
+	<div>
+		<h1>js interactive loaded url</h1>
+		<button id="clickThis">clickthis</button>
+		<div id="interactive">
+			<p>Interactive url should show here:</p>
+			<a id="url2"></a>
+		</div>
+	</div>
+	
+	<script>
+		$( document ).ready(function() {
+		    console.log( "ready!" );
+		    
+		    $("#url1").attr("href", "files/images/routes01.png").text("click me");
+		    
+		    
+		    $("#clickThis").click(function(){
+		    	console.log("button clicked");
+		    	$("#url2").attr("href", "files/images/routes02.png").text("click me");
+			    
+		    });
+		});
+	
+	</script>
+	
+	
+
+</body>
+</html>
