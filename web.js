@@ -143,11 +143,18 @@ app.get('/routes-cn', function(req, res){
 	});
 });
 
-
+// CSCI572 HW1 test page
+app.get('/csci572', function(req, res){
+	fs.readFile('csci572/csci572.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
 
 // CSCI572 test page
-app.get('/csci572', function(req, res){
-	fs.readFile('csci572.html', function(err, file) {
+app.get('/csci572/:testDocId', function(req, res){
+	fs.readFile('csci572/' + req.params.testDocId + '.html', function(err, file) {
 		res.setHeader('Content-Type', 'text/html');
 		res.setHeader('Content-Length', file.length);
 		res.end(file);
