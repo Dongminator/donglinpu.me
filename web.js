@@ -62,6 +62,15 @@ app.get('/lessDemo', function(req, res){
 });
 
 
+//Referral page
+app.get('/referral', function(req, res){
+	fs.readFile('referral.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
 //Projects page
 app.get('/projects', function(req, res){
 	fs.readFile('projects.html', function(err, file) {
