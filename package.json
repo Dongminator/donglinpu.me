@@ -1,13 +1,13 @@
 {
   "name": "PersonalWeb",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "dependencies": {
-    "express": "3.x",
-    "less": "latest",
+    "express": "*",
+    "less": "*",
     "aws-sdk": "*"
   },
   "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
+    "node": "latest",
+    "npm": "latest"
   }
 }
