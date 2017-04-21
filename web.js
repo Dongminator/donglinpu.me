@@ -172,11 +172,12 @@ app.get('/csci572/:testDocId', function(req, res){
 
 //NYU application 
 app.get('/nyu', function(req, res){
-	fs.readFile('nyu.html', function(err, file) {
-		res.setHeader('Content-Type', 'text/html');
-		res.setHeader('Content-Length', file.length);
-		res.end(file);
-	});
+//	fs.readFile('nyu.html', function(err, file) {
+//		res.setHeader('Content-Type', 'text/html');
+//		res.setHeader('Content-Length', file.length);
+//		res.end(file);
+//	});
+	res.redirect("/");
 });
 
 app.get('/webregTest', function(req, res) {
@@ -198,19 +199,21 @@ app.get('/webregTest', function(req, res) {
 
 //shortened url
 app.get('/q', function(req, res){
-	res.writeHead(302, {
-		'Location': 'https://docs.google.com/forms/d/13EQuWjsa8E_IK2ANUcFHLqawFrJypFJlKwzQR89R-6s/viewform'
-			//add other headers here...
-	});
-	res.end();
+//	res.writeHead(302, {
+//		'Location': 'https://docs.google.com/forms/d/13EQuWjsa8E_IK2ANUcFHLqawFrJypFJlKwzQR89R-6s/viewform'
+//			//add other headers here...
+//	});
+//	res.end();
+	res.redirect("/");
 });
 
 app.get('/t', function(req, res){
-	res.writeHead(302, {
-		'Location': 'https://docs.google.com/forms/d/1w_WATNgPNyMX8YWS6XIxVQ3ZMYezo9yu8JxtOYn6JH4/viewform'
-			//add other headers here...
-	});
-	res.end();
+//	res.writeHead(302, {
+//		'Location': 'https://docs.google.com/forms/d/1w_WATNgPNyMX8YWS6XIxVQ3ZMYezo9yu8JxtOYn6JH4/viewform'
+//			//add other headers here...
+//	});
+//	res.end();
+	res.redirect("/");
 });
 
 app.get('/msopenhack2015', function(req, res){
