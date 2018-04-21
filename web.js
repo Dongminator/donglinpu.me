@@ -80,6 +80,14 @@ app.get('/projects', function(req, res){
 	});
 });
 
+app.get('/waibao', function(req, res){
+	fs.readFile('waibao.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
 
 
 
