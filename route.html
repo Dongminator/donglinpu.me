@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	
+	<title>Google Map</title>
+	<link href="./scripts/css/route.css" rel="stylesheet">
+	
+</head>
+
+<body>
+	
+	<input id="searchBox" class="controls" type="text" placeholder="Search Box">
+	<button id="addBtn">Add</button>
+	<button id="routeBtn">Route</button>
+	<div id="map"></div>
+
+
+	<script src="./scripts/jquery-1.11.0.min.js"></script>
+	<script src="./scripts/route/route.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4wfCSC_M8EiKKFC-Z1kpr79PfH4HZVJ0&libraries=places&callback=initAutocomplete"></script>
+
+</body>
+</html>

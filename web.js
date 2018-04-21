@@ -80,6 +80,9 @@ app.get('/projects', function(req, res){
 	});
 });
 
+
+
+
 //EasyReg project page
 app.get('/easyreg', function(req, res){
 	fs.readFile('easyreg.html', function(err, file) {
@@ -137,6 +140,15 @@ app.get('/travel2014', function(req, res){
 //Travel 2014 page
 app.get('/ditu', function(req, res){
 	fs.readFile('ditu.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+//Route
+app.get('/route', function(req, res){
+	fs.readFile('route.html', function(err, file) {
 		res.setHeader('Content-Type', 'text/html');
 		res.setHeader('Content-Length', file.length);
 		res.end(file);
@@ -364,3 +376,104 @@ function sendRequest (options, response) {
 
 var port = process.env.PORT || 3000;
 server.listen(port);
+
+
+
+
+
+
+//Projects page
+app.get('/stock', function(req, res){
+	fs.readFile('stock.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+
+/*
+ * JSON template
+ * 
+Date,		Open,	High,	Low,	Close,Volume
+9-Jun-14,	62.40,	63.34,	61.79,	62.88,37617413
+ 
+[{"Date":"9-Jun-14","Open":62.40,"High":63.34,"Low":61.79,"close":"62.88","Volume":37617413},
+{"Date":"9-Jun-14","Open":62.40,"High":63.34,"Low":61.79,"close":"62.88","Volume":37617413},
+{"Date":"9-Jun-14","Open":62.40,"High":63.34,"Low":61.79,"close":"62.88","Volume":37617413},
+{"Date":"9-Jun-14","Open":62.40,"High":63.34,"Low":61.79,"close":"62.88","Volume":37617413},
+{"Date":"9-Jun-14","Open":62.40,"High":63.34,"Low":61.79,"close":"62.88","Volume":37617413}
+]
+
+ */
+
+app.get('/offline', function(request, response){
+	var obj = JSON.parse(fs.readFileSync('scripts/css/offline.json', 'utf8'));
+	response.send(obj);
+    response.end();
+});
+
+var AlphaVantageAPI = "IJHVVYK24IE8R6SR";
+var AlphaVantageBasePath = "/query?apikey=" + AlphaVantageAPI + "&function=";
+app.get('/stock/:arg1/:arg2?', function(request, response){
+	var ticker = request.params.arg1;
+	var interval = request.params.arg2;
+	console.log(ticker);
+	console.log(interval);
+	
+	if (typeof interval == 'undefined' || interval.length < 4) {
+		interval = "1min"
+	}
+	
+	var path = AlphaVantageBasePath + "TIME_SERIES_INTRADAY" 
+			+ "&symbol=" + ticker
+			+ "&interval=" + interval;
+	console.log(path);
+	var body = "";
+	var options = {
+			hostname: "www.alphavantage.co",
+			port: 443,
+			path: path,
+			method: 'GET'
+	};
+	
+	var req = https.request(options, function(res) { // res is IncomingMessage help: http://nodejs.org/api/http.html#http_http_incomingmessage
+//		console.log('statusCode:', res.statusCode);
+//		console.log('headers:', res.headers);
+		
+		res.on('data', function (chunk) {// this happens multiple times! So need to use 'body' to collect all data
+			body += chunk;
+		});
+		
+		res.on('end', function(){
+//			console.log(body);
+			response.send(body);
+		    response.end();
+		});
+		
+		
+		// res.statusCode
+//		res.setEncoding("utf8");
+//		res.on('end', function () { // when we have full 'body', convert to JSON and send back to client.
+//			try {
+//				data = JSON.parse(body);
+//		    } catch (er) {
+//		    	// something wrong with JSON
+//		    	response.statusCode = 400;
+//		    	return response.end('error: ' + er.message);
+//		    }
+//
+//		    // redirect to app home	   
+//		    response.setHeader("Access-Control-Allow-Origin", '*');
+//		    response.send(data);
+//		    response.end();
+//		  });
+	});
+	
+	req.on('error', function (e) {
+		  console.error(e);	  
+	});
+	req.end();
+});
+
+
