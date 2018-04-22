@@ -17,88 +17,91 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-		<a class="navbar-brand" href="/waibao">WaiBao</a>
-		
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcontent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		
-		<div class="collapse navbar-collapse" id="navbarcontent">
-			<ul class="navbar-nav mr-auto" id="menu">
-				<li data-menuanchor="page1" data-toggle="collapse" data-target=".navbar-collapse" class="nav-item active">
-					<a class="nav-link" href="#home">Home</a>
-				</li>
-				<li data-menuanchor="page2" data-toggle="collapse" data-target=".navbar-collapse" class="nav-item">
-					<a class="nav-link" href="#about">About</a>
-				</li>
-				<li data-menuanchor="page3" data-toggle="collapse" data-target=".navbar-collapse" class="nav-item">
-					<a class="nav-link" href="#case">Case</a>
-				</li>
-				<li data-menuanchor="page4" data-toggle="collapse" data-target=".navbar-collapse" class="nav-item">
-					<a class="nav-link" href="#pricing">Pricing</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link disabled" href="/waibao" target="_blank">Facebook</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link disabled" href="/waibao" target="_blank">WeChat</a>
-				</li>
-			</ul>
-		</div><!--/.nav-collapse -->
-	</nav>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+			<a class="navbar-brand" href="/waibao">WaiBao</a>
+			
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcontent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="navbarcontent">
+				<ul class="navbar-nav mr-auto" id="menu">
+					<li data-menuanchor="page1" data-toggle="collapse" data-target=".navbar-collapse" class="nav-item active">
+						<a class="nav-link" href="#home">Home</a>
+					</li>
+					<li data-menuanchor="page2" data-toggle="collapse" data-target=".navbar-collapse" class="nav-item">
+						<a class="nav-link" href="#about">About</a>
+					</li>
+					<li data-menuanchor="page3" data-toggle="collapse" data-target=".navbar-collapse" class="nav-item">
+						<a class="nav-link" href="#case">Case</a>
+					</li>
+					<li data-menuanchor="page4" data-toggle="collapse" data-target=".navbar-collapse" class="nav-item">
+						<a class="nav-link" href="#pricing">Pricing</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link disabled" href="/waibao" target="_blank">Facebook</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="/waibao" target="_blank">WeChat</a>
+					</li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</nav>
+	</header>
+
+	<main role="main">
+		<div id="pagepiling">
+			<div class="section" id="section1">
 	
-
-	<div id="pagepiling">
-		<div class="section" id="section1">
-
-			<div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#carousel-home" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-home" data-slide-to="1"></li>
-					<li data-target="#carousel-home" data-slide-to="2"></li>
-				</ol>
-				<div class="carousel-inner">
-					<div class="carousel-item active w-100">
-						<img class="" src="files/images/France-Italy-Spain.png" alt="Case 1">
-					</div>
-					<div class="carousel-item w-100">
-						<img class="" src="files/images/routes02.png" alt="Case 2">
-					</div>
-					<div class="carousel-item w-100">
-						<img class="" src="files/images/help.png" alt="Case 2">
+				<div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-home" data-slide-to="0" class="active"></li>
+						<!-- <li data-target="#carousel-home" data-slide-to="1"></li>
+						<li data-target="#carousel-home" data-slide-to="2"></li> -->
+					</ol>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img class="" src="files/images/France-Italy-Spain.png" alt="Case 1">
+						</div>
+						<!-- <div class="carousel-item w-100">
+							<img class="" src="files/images/routes02.png" alt="Case 2">
+						</div>
+						<div class="carousel-item w-100">
+							<img class="" src="files/images/help.png" alt="Case 2">
+						</div> -->
 					</div>
 				</div>
-			</div>
-			
-	    </div>
-	    
-	    <div class="section" id="section2">
-	    	<div class="intro">
-	    		<div id="colors"></div>
-	    		<h1>About</h1>
-	    		<p>This page is about xyz abc doija a sdf aldsfja ldjfal;kj adf kllkajdsf</p>
-	    	</div>
-	    </div>
-	    <div class="section" id="section3">
-	    	<div class="intro">
-	    		<h1>Case</h1>
-	    		<p>Case 1,, case 2, case 3, case 4</p>
-	    		<div id="colors2"></div>
-	    		<div id="colors3"></div>
-	    	</div>
-	    </div>
-	    <div class="section" id="section4">
-	    	<div class="intro">
-	    		<h1>Pricing</h1>
-	    		<p>Tier 1</p>
-	    		<p>Tier 2</p>
-	    	</div>
-	    </div>
-	</div>
+				
+		    </div>
+		    
+		    <div class="section" id="section2">
+		    	<div class="intro">
+		    		<div id="colors"></div>
+		    		<h1>About</h1>
+		    		<p>This page is about xyz abc doija a sdf aldsfja ldjfal;kj adf kllkajdsf</p>
+		    	</div>
+		    </div>
+		    <div class="section" id="section3">
+		    	<div class="intro">
+		    		<h1>Case</h1>
+		    		<p>Case 1,, case 2, case 3, case 4</p>
+		    		<div id="colors2"></div>
+		    		<div id="colors3"></div>
+		    	</div>
+		    </div>
+		    <div class="section" id="section4">
+		    	<div class="intro">
+		    		<h1>Pricing</h1>
+		    		<p>Tier 1</p>
+		    		<p>Tier 2</p>
+		    	</div>
+		    </div>
+		</div>
+	</main>
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
