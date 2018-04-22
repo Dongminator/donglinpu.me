@@ -24,10 +24,10 @@ $(document).ready(function() {
 function resizeCarouselImage () {
 	var screenHeight = $(window).height();
 	var topSpace = $("nav").outerHeight();
-	
 	var imgMargin = $("#carousel-home img").outerHeight(true) - $("#carousel-home img").outerHeight();
 	
 	var allowedHeight = screenHeight - topSpace - imgMargin;
+	
 	$('#carousel-home img').height(allowedHeight);
 	$('.carousel-indicators').offset({ top: screenHeight - 10 });
 }
