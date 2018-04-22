@@ -339,6 +339,7 @@ p{
 /* Resize image */
 .carousel-inner {
 	height:100%;
+	height:100%;
 	background-color: grey;
 }
 .carousel-inner img {
@@ -346,5 +347,6 @@ p{
 }
 
 #carousel-home {
+	height:100%;
 	height:100%;
 }
