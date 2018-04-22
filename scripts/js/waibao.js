@@ -29,5 +29,9 @@ function resizeCarouselImage () {
 	var allowedHeight = screenHeight - topSpace - imgMargin;
 	
 	$('#carousel-home img').height(allowedHeight);
-	$('.carousel-indicators').offset({ top: screenHeight - 10 });
+	
+	if ($("#section1").hasClass("active")) {
+		$('.carousel-indicators').offset({ top: screenHeight - 10 });
+	}
+	
 }
