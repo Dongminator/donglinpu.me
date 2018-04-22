@@ -214,7 +214,6 @@ p{
 	position: absolute;
 	height: 413px;
 	width: 258px;
-	background-image: url(imgs/colors.gif);
 	background-repeat: no-repeat;
 }
 
@@ -240,11 +239,9 @@ p{
 	right: 0;
 }
 #colors2{
-	background-image: url(imgs/colors2.gif);
 	top:0;
 }
 #colors3{
-	background-image: url(imgs/colors3.gif);
 	bottom:0;
 }
 
@@ -261,106 +258,99 @@ p{
 }
 
 
-.twitter-share-button{
-	position: fixed;
-	z-index: 99;
-	right: 149px;
-	top: 9px;
-}
-#starGithub{
-	position: fixed;
-	z-index: 99;
-	right: 264px;
-	top: 9px;
-	width: 90px;
-}
-
-
-
-
-
-
 
 
 
 /* Section 1
-	 * --------------------------------------- */
-	#section1 h1{
-		color: #444;
-	}
-	#section1 p{
-		color: #333;
-		color: rgba(0,0,0,0.3);
-	}
-	#section1 img{
-		margin: 20px 0;
-		opacity: 0.7;
-	}
+ * --------------------------------------- */
+#section1 h1{
+	color: #444;
+}
+#section1 p{
+	color: #333;
+	color: rgba(0,0,0,0.3);
+}
+#section1 img{
+	margin: 20px 0;
+	opacity: 0.7;
+}
 
-	/* Section 2
-	 * --------------------------------------- */
-	#section2 h1,
-	#section2 p{
-		z-index: 3;
-	}
-	#section2 p{
-		opacity: 0.8;
-	}
+/* Section 2
+ * --------------------------------------- */
+#section2 h1,
+#section2 p{
+	z-index: 3;
+}
+#section2 p{
+	opacity: 0.8;
+}
 
-	#section2 #colors{
-		right: 60px;
-		bottom: 0;
-		position: absolute;
-		height: 413px;
-		width: 258px;
-		background-image: url(imgs/colors.gif);
-		background-repeat: no-repeat;
-	}
+#section2 #colors{
+	right: 60px;
+	bottom: 0;
+	position: absolute;
+	height: 413px;
+	width: 258px;
+	background-repeat: no-repeat;
+}
 
-	/* Section 3
-	 * --------------------------------------- */
-	#section3 #colors{
-		left: 60px;
-		bottom: 0;
-	}
-	#section3 p{
-		color: #757575;
-	}
+/* Section 3
+ * --------------------------------------- */
+#section3 #colors{
+	left: 60px;
+	bottom: 0;
+}
+#section3 p{
+	color: #757575;
+}
 
-	#colors2,
-	#colors3{
-		position: absolute;
-		height: 163px;
-		width: 362px;
-		z-index: 1;
-		background-repeat: no-repeat;
-		left: 0;
-		margin: 0 auto;
-		right: 0;
-	}
-	#colors2{
-		background-image: url(imgs/colors2.gif);
-		top:0;
-	}
-	#colors3{
-		background-image: url(imgs/colors3.gif);
-		bottom:0;
-	}
+#colors2,
+#colors3{
+	position: absolute;
+	height: 163px;
+	width: 362px;
+	z-index: 1;
+	background-repeat: no-repeat;
+	left: 0;
+	margin: 0 auto;
+	right: 0;
+}
+#colors2{
+	top:0;
+}
+#colors3{
+	bottom:0;
+}
 
-	/* Section 4
-	 * --------------------------------------- */
-	#section4 p{
-		opacity: 0.6;
-	}
+/* Section 4
+ * --------------------------------------- */
+#section4 p{
+	opacity: 0.6;
+}
 
-	/* Overwriting fullPage.js tooltip color
-	* --------------------------------------- */
-	#pp-nav.custom .pp-tooltip{
-		color: #AAA;
-	}
-	#markup{
-		display: block;
-		width: 450px;
-		margin: 20px auto;
-		text-align: left;
-	}
+/* Overwriting fullPage.js tooltip color
+* --------------------------------------- */
+#pp-nav.custom .pp-tooltip{
+	color: #AAA;
+}
+#markup{
+	display: block;
+	width: 450px;
+	margin: 20px auto;
+	text-align: left;
+}
+
+	
+	
+/* Resize image */
+.carousel-inner {
+	height:100%;
+	background-color: grey;
+}
+.carousel-inner img {
+	margin: 0 auto;
+}
+
+#carousel-home {
+	height:100%;
+}
