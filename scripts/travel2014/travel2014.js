@@ -57,7 +57,7 @@ function loadScript(url, callback){
 	callback = langFileReady;
     var script = document.createElement("script")
     script.type = "text/javascript";
-    script.charset="gb2312"; // important for displaying Chinese characters
+    script.charset="utf-8"; // important for displaying Chinese characters
 
     if (script.readyState){  //IE
         script.onreadystatechange = function(){

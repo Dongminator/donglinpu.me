@@ -1,35 +1,34 @@
 var str_langChangeTo = "English";
 
-var str_note = "6��9�� - 6��14�գ�����������";
-var str_intro = "��Ϊ����8��Ҫȥ���������ˣ����������ý�������2���£���������ĺ�ɽ��ˮ��Ŀǰ�ƻ����籭������ȥ���ݸ����棬������м����˴�飬�������~";
+var str_note = "6月9日 - 6月14日：洛阳、西安";
+var str_intro = "2014年8月去美国读研前，游览了祖国的好山好水";
 
 // 6.9 Mon day 1
-var str_d1_beijing = "6.9���ϴӱ�����վ����";
-var str_d1_luoyang = "6.9������������վ";
-var str_d1_luoyangCoach = "6.9����˴�ͳ�ǰ����ɽ���µĵǷ���";
-var str_d1_dengfeng = "6.9���ϵ���Ƿ���";
-var str_d1_hotel = "6.9ס�ڵǷ��оƵ�";
+var str_d1_beijing = "6.9早上从北京西站出发";
+var str_d1_luoyang = "6.9到达洛阳龙门站";
+var str_d1_luoyangCoach = "6.9下午乘大巴车前往嵩山脚下的登封市";
+var str_d1_dengfeng = "6.9晚上到达登封市";
+var str_d1_hotel = "6.9住在登封市酒店";
 
 // 6.10 Tue day 2
-var str_d2_shaoshishan = "6.10�ʵ�����ɽ������5��������6�㵽�ﾰ���ſڣ���Ʊ�Ļ�û�ϰ࣬������ѽ���~�����ں���һ���൱��ͣ�Ȼ��û�������£�ֱ�ӵ�ɽ�������³���ں󣬼����й�·��15���ӣ���������կ���ţ����һСʱ�󣬵����³��յ㣬Ȼ�����ǰ�з�������ɽ����2.5Сʱ�󣬵ִ�����կ����ɽ1Сʱ��������կ���ڳ����˺ڳ��ص��������š�";
-var str_d2_hotel = "6.10ס���������ź�ͥ";
+var str_d2_shaoshishan = "6.10攀登少室山：早上5点半出发，6点到达景区门口，查票的还没上班，所以免费进入~景区内喝了一碗粥当早餐，然后没进少林寺，直接登山；到达缆车入口后，继续研公路走15分钟，到达三皇寨南门，大概一小时后，到达缆车终点，然后继续前行翻过两座山历经2.5小时后，抵达三皇寨；下山1小时，从三皇寨出口出，乘黑车回到景区正门。";
+var str_d2_hotel = "6.10住在洛阳龙门汉庭";
 
 // 6.11 Wed day 3
-var str_longmen = "����������վ�˹�������Լ1h��������ʯ�ߣ������Ϊ4��������ɽʯ�ߡ���ɽʯ�ߡ���ɽ�ºͰ�԰���󲿷�ʯ��λ����ɽʯ�ߡ���ɽ���ǽ���ʯ����ס���ĵط�����԰��Ϊ����׾��׶�����";
-var str_xian_arrival = "���������˻𳵵���������վ�����������������������ڣ��ִ��վ������ͥס��";
-var str_xian_hotel = "������ס�ں�ͥ(��վ����)��һ����122�������վ�ͻ�վ����Զ����ͨ���Ǻܷ���";
+var str_longmen = "在洛阳龙门站乘公共汽车约1h到达龙门石窟，里面分为4个区：西山石窟、东山石窟、香山寺和白园。大部分石窟位于西山石窟。香山寺是蒋介石曾经住过的地方，白园是为纪念白居易而建。";
+var str_xian_arrival = "第三日晚乘火车到达西安北站，乘坐西安地铁到达市区内，抵达火车站附近汉庭住下";
+var str_xian_hotel = "后三天住在汉庭(火车站东店)，一晚￥122，离地铁站和火车站都稍远，交通不是很方便";
 
 // 6.12 Thu day 4
-var str_huiminjie = "�緹�ڻ���ֳԵ���ҵ�����ɣ��������������ߺܶ࣬�ϰ׼ҵ�������Ŷ��˺ܶ�";
-var str_zhonglou = "��¥";
-var str_gulou = "��¥";
-var str_chengqiang = "�ų�ǽ����Ʊ50��ǽ�Ͽ��������г���������2Сʱ50";
+var str_huiminjie = "午饭在回民街吃的孙家的肉夹馍，后来发现往里走很多，老白家的肉夹馍排队人很多";
+var str_zhonglou = "钟楼";
+var str_gulou = "鼓楼";
+var str_chengqiang = "古城墙，门票50，墙上可以租自行车，好像是2小时50";
 
 // 6.13 Fri day 5
-var str_huaqingchi = "�����";
-var str_bingmayong = "����ٸ��1�ſӺ�׳�ۣ�2��3��Ҳ��������Ʊ��150";
+var str_huaqingchi = "华清池";
+var str_bingmayong = "兵马俑：1号坑很壮观！2、3号也不错。门票￥150";
 
 // 6.14 Sat day 6
-var str_dayanta = "�������������������緹ȥ�����µ�һ�棬һ���泤3.8�ף�";
-var str_d6_return = "���������ϳ˻�T42�ر����������糿����";
-
+var str_dayanta = "第六日游览大雁塔，午饭去的天下第一面，一根面长3.8米！";
+var str_d6_return = "第六日晚上乘火车T42回北京，次日早晨到达";
