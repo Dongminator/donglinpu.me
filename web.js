@@ -89,8 +89,6 @@ app.get('/waibao', function(req, res){
 });
 
 
-
-
 //EasyReg project page
 app.get('/easyreg', function(req, res){
 	fs.readFile('easyreg.html', function(err, file) {
