@@ -7,7 +7,19 @@ $(document).ready(function() {
 	    navigation: {
 	    		'position': 'right',
 	   		'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4']
-	   	}
+	   	},
+	   	afterLoad: function (anchorLink, index) {
+	   		if (index == 1) {
+	   			resizeHeightSet();
+	   		}
+	   		
+	   	},
+	   	onLeave: function(index, nextIndex, direction){
+	   		
+	   	},
+	   	afterRender: function(){
+	   		
+		}
 	});
 
 	resizeHeightSet();
@@ -15,7 +27,7 @@ $(document).ready(function() {
 	$('#carousel-home').carousel();
 	
 	$(window).on('resize orientationchange', function() {
-		resizeHeightSet();	
+		resizeHeightSet();
 	});
 	
 	
@@ -25,12 +37,13 @@ function resizeHeightSet(){
 	var screenHeight = $(window).height();
 	var topSpace = $("nav").outerHeight();
 	
-	
 	if ($("#section1").hasClass("active")) {
 		var imgHeight = $('#carousel-home .active img').height();
 		var neededTop = (screenHeight - topSpace - imgHeight)/2;
-		
+		console.log(imgHeight + " " + neededTop);
 		$('#carousel-home .carousel-inner').css("top", neededTop);
-		$('.carousel-indicators').offset({ top: screenHeight - 10 });
+		
+		var indicatorTop = screenHeight - topSpace - 10;
+		$('.carousel-indicators').css("top", indicatorTop);
 	}
 }
