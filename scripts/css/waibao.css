@@ -1,48 +1,5 @@
 @CHARSET "ISO-8859-1";
-/* Reset CSS
- * --------------------------------------- */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
-form,fieldset,input,textarea,p,blockquote,th,td {
-    padding: 0;
-    margin: 0;
-}
-a{
-	text-decoration:none;
-}
-table {
-    border-spacing: 0;
-}
-fieldset,img {
-    border: 0;
-}
-address,caption,cite,code,dfn,em,strong,th,var {
-    font-weight: normal;
-    font-style: normal;
-}
-strong{
-	font-weight: bold;
-}
-ol,ul {
-    list-style: none;
-    margin:0;
-    padding:0;
-}
-caption,th {
-    text-align: left;
 
-}
-h1,h2,h3,h4,h5,h6 {
-    font-weight: normal;
-    font-size: 100%;
-    margin:0;
-    padding:0;
-    color:#f2f2f2;
-}
-q:before,q:after {
-    content:'';
-}
-abbr,acronym { border: 0;
-}
 
 /* Custom CSS
  * --------------------------------------- */
@@ -78,9 +35,6 @@ p{
 	color: #333;
 	color: rgba(0,0,0,0.3);
 }
-#section1 img{
-	opacity: 0.7;
-}
 
 /* Section 2
  * --------------------------------------- */
@@ -92,42 +46,12 @@ p{
 	opacity: 0.8;
 }
 
-#section2 #colors{
-	right: 60px;
-	bottom: 0;
-	position: absolute;
-	height: 413px;
-	width: 258px;
-	background-repeat: no-repeat;
-}
-
 /* Section 3
  * --------------------------------------- */
-#section3 #colors{
-	left: 60px;
-	bottom: 0;
-}
 #section3 p{
 	color: #757575;
 }
 
-#colors2,
-#colors3{
-	position: absolute;
-	height: 163px;
-	width: 362px;
-	z-index: 1;
-	background-repeat: no-repeat;
-	left: 0;
-	margin: 0 auto;
-	right: 0;
-}
-#colors2{
-	top:0;
-}
-#colors3{
-	bottom:0;
-}
 
 /* Section 4
  * --------------------------------------- */
@@ -140,15 +64,6 @@ p{
 #pp-nav.custom .pp-tooltip{
 	color: #AAA;
 }
-
-
-
-/* 
-#carousel-home {
-	width:100%;
-	height:100%;
-} */
-
 
 
 /* Parent need to be 100% first */

@@ -29,7 +29,7 @@ function resizeHeightSet(){
 	if ($("#section1").hasClass("active")) {
 		var imgHeight = $('#carousel-home .active img').height();
 		var neededTop = (screenHeight - topSpace - imgHeight)/2;
-		console.log(screenHeight + " " + topSpace + " " + imgHeight + " = " + neededTop);
+		
 		$('#carousel-home .carousel-inner').css("top", neededTop);
 		$('.carousel-indicators').offset({ top: screenHeight - 10 });
 	}
