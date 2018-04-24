@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all">
+    <meta name="Description" content="腾爱医生是腾讯为医生群体量身定做的平台产品，它定位于为医生和医生团队提供一个稳定，便捷，高效，安全的医疗移动化工具，帮助医生快捷、高效的管理公众号和患者，建立自己的口碑和品牌。" />
+    <meta name="Keywords" content="腾爱,腾爱医生,腾爱医生官网,腾爱医生app,腾讯腾爱医生,腾讯医疗,腾爱医疗,医生,公众号管理,公众号管理助手,患者管理,随访,咨询医生" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="bookmark" href="./img/favicon.ico" type="image/x-icon" />
+    <link href="./favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <title>腾爱医生-医生的公众号管理助手</title>
+    <link href="./css/site.css?v=2" rel="stylesheet">
+    <script>
+        (function() {
+            window.clickStat = function(url, param) {
+                if (window.MtaH5 && window.MtaH5.clickStat) {
+                    window.clickStat = window.MtaH5.clickStat;
+                    window.clickStat(url, param);
+                } else {
+                    console.log('clickStat not ready');
+                }
+            }
+        }());
+    </script>
+</head>
+
+<body class="home">
+    <div class="header header-light">
+        <div class="header-content">
+            <a href="/" class="logo" onclick="clickStat('official_link_logo');"></a>
+            <ul class="main-nav">
+                <li class="active"><a href="/" onclick="clickStat('official_web',{'navhome':'true'});clickStat('official_link_home');">首页</a></li>
+                <li class=" drop-down jsDropDown">
+                    <a>解决方案&nbsp;<i class="icon icon-triangle"></i></a>
+                    <ul class="drop-down-content sub-menu">
+                        <li class=""><a href="./personalScheme.html" onclick="clickStat('official_web',{'navdoctor':'true'});clickStat('official_link_personal_scheme');">医生解决方案</a></li>
+                        <li class=""><a href="./groupScheme.html" onclick="clickStat('official_web',{'navgroup':'true'});clickStat('official_link_group_scheme');">医生集团解决方案</a></li>
+                        <li class=""><a href="./clinicScheme.html" onclick="clickStat('official_web',{'navclinic':'true'});clickStat('official_link_clinic_scheme');">诊所解决方案</a></li>
+                        <li class=""><a href="./hospitalScheme.html" onclick="clickStat('official_web',{'navhospital':'true'});clickStat('official_link_hospital_scheme');">医院解决方案</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="./faqs/index.html" onclick="clickStat('official_web',{'navfaqs':'true'});clickStat('official_link_faq');">常见问题</a></li>
+            </ul>
+            <ul class="header-tools">
+                <li class="tool-item">
+                    <a target="_blank" href="#" onclick="clickStat('official_link_login');">登录</a>
+                </li>
+                <li class="tool-item">
+                    <a class="btn btn-register" target="_blank" href="#" onclick="clickStat('official_link_register');">注册</a>
+                </li>
+                <li class="tool-item drop-down download jsDropDown">
+                    <a href="javascript:void(0);"><i class="icon icon-download"></i>下载</a>
+                    <div class="drop-down-content">
+                        <div class="qrcode-container">
+                            <i class="icon icon-qrcode-app"></i>
+                        </div>
+                        <div class="download-help">
+                            扫码免费下载<br> IOS及安卓版
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="banner-content">
+            <h3 class="sub-title">值得信赖的医疗解决方案</h3>
+            <div>
+                <a target="_blank" href="#" class="btn btn-primary btn-join" onclick="clickStat('official_home_banner_join');">立即体验</a>
+            </div>
+        </div>
+    </div>
+    <div class="section solution-section">
+        <h3 class="section-title">腾爱医生提供多种医疗解决方案</h3>
+        <ul class="card-area" id="cardArea">
+            <li class="card-item">
+                <div class="icon-container">
+                    <i class="icon icon-personal"></i>
+                </div>
+                <h2 class="title">医生</h2>
+                <div class="note">
+                    输出个人品牌，获得服务收益
+                </div>
+                <a href="./personalScheme.html" class="btn btn-hollow-white btn-view" onclick="clickStat('official_card_area_personal_scheme');">查看详情</a>
+            </li>
+            <li class="card-item">
+                <div class="icon-container">
+                    <i class="icon icon-team"></i>
+                </div>
+                <h2 class="title">医生集团(团队)</h2>
+                <div class="note">
+                    医生协作管理，共建服务品牌
+                </div>
+                <a href="./groupScheme.html" class="btn btn-hollow-white btn-view" onclick="clickStat('official_card_area_group_scheme');">查看详情</a>
+            </li>
+            <li class="card-item">
+                <div class="icon-container">
+                    <i class="icon icon-clinic"></i>
+                </div>
+                <h2 class="title">诊所</h2>
+                <div class="note">
+                    沉淀患者口碑，延伸医疗服务
+                </div>
+                <a href="./clinicScheme.html" class="btn btn-hollow-white btn-view" onclick="clickStat('official_card_area_clinic_scheme');">查看详情</a>
+            </li>
+            <li class="card-item">
+                <div class="icon-container">
+                    <i class="icon icon-hospital"></i>
+                </div>
+                <h2 class="title">医院</h2>
+                <div class="note">
+                    智能导诊，改善服务提高效率
+                </div>
+                <a href="./hospitalScheme.html" class="btn btn-hollow-white btn-view" onclick="clickStat('official_card_area_hospital_scheme');">查看详情</a>
+            </li>
+        </ul>
+    </div>
+    <div class="section capability-section" id="capabilitySection">
+        <h3 class="section-title">腾爱医生提供四种能力精准连接医患</h3>
+        <div class="section-content">
+            <div class="role-name role-name-1">患者</div>
+            <div class="role-name role-name-2">医生</div>
+            <div class="capability-item capability-item-1">
+                <h3 class="capability-title">品牌</h3>
+                <div class="capability-desc">
+                    低成本连接患者<br> 内容沉淀带来口碑传播
+                    <br> 建立以患者为中心的品牌
+                </div>
+            </div>
+            <div class="capability-item capability-item-2">
+                <h3 class="capability-title">效率</h3>
+                <div class="capability-desc">
+                    团队管理&nbsp;财务结算<br> 运营工具
+                </div>
+            </div>
+            <div class="capability-item capability-item-3">
+                <h3 class="capability-title">保障</h3>
+                <div class="capability-desc">
+                    资质认证&nbsp;法务支持<br> 数据安全
+                </div>
+            </div>
+            <div class="capability-item capability-item-4">
+                <h3 class="capability-title">品质</h3>
+                <div class="capability-desc">
+                    服务监控&nbsp;服务评价<br> 服务规范
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section statistic-section" id="statisticSection">
+        <div class="section-content wrap" id="statisticSectionContent">
+            <h3 class="section-title">
+                腾爱医生服务患者<span class="text-primary">2000W</span><br> 每日咨询量
+                <span class="text-primary">3W+</span>
+            </h3>
+            <div class="note">
+                覆盖14个临床科室及4个医技科室,<br> 使用腾爱医生后，线上互动粉丝有15%转化为患者
+            </div>
+        </div>
+    </div>
+    <div class="main-footer">
+        <div class="wrap">
+            <div class="footer-blocks">
+                <div class="footer-block">
+                    <h3 class="block-title">常见问题</h3>
+                    <div class="block-links">
+                        <a href="./faq/faq.html" onclick="clickStat('official_footer_faq_about_ta');">关于腾爱医生</a><br>
+                        <a href="./faq/faq-1-2.html" onclick="clickStat('official_footer_faq_ta_function');">腾爱医生功能介绍</a><br>
+                    </div>
+                </div>
+                <div class="footer-block">
+                    <h3 class="block-title">服务接入支持</h3>
+                    <div class="block-links">
+                        关注公众号：腾爱医生（tengai2016）
+                    </div>
+                </div>
+                <div class="footer-block">
+                    <h3 class="block-title">渠道合作</h3>
+                    <div class="block-links">
+                        联系邮箱：tengai@www.genban.orgcom<br> 联系微信：yangzhi7
+                    </div>
+                </div>
+                <div class="footer-block" style="padding-top: 41px;margin-right: 0;">
+                    <div class="block-links copy-right">
+                        ©1998-<span id="cpYear">2017</span> www.genban.org All Rights Reserved.
+                        <ul class="links">
+                            <li><a href="javascript:void(0)" onclick="clickStat('official_footer_link_privacy');">隐私保护</a></li>
+                            <li><a href="javascript:void(0)" onclick="clickStat('official_footer_link_items');">服务条款</a></li>
+                            <li><a href="javascript:void(0)" onclick="clickStat('official_footer_link_customer_service');">客服中心</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-qrcode">
+                    <i class="icon icon-qrcode-wechat"></i>
+                    <div class="note">腾爱医生公众号</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function() {
+            var rclass = /[\t\r\n\f]/g;
+            var rnotwhite = (/\S+/g);
+
+            window.util = {
+                trim: function(str) {
+                    return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+                },
+                hasClass: function(ele, className) {
+                    className = " " + className + " ";
+                    return ele.nodeType === 1 && (" " + ele.className + " ").replace(rclass, " ").indexOf(className) >= 0;
+                },
+                addClass: function(ele, value) {
+                    var classes, cur, clazz, j, finalValue;
+                    classes = (value || "").match(rnotwhite) || [];
+                    cur = ele.className ?
+                        (" " + ele.className + " ").replace(rclass, " ") :
+                        " ";
+                    if (cur) {
+                        j = 0;
+                        while ((clazz = classes[j++])) {
+                            if (cur.indexOf(" " + clazz + " ") < 0) {
+                                cur += clazz + " ";
+                            }
+                        }
+
+                        finalValue = window.util.trim(cur);
+                        if (ele.className !== finalValue) {
+                            ele.className = finalValue;
+                        }
+                    }
+                },
+                removeClass: function(ele, value) {
+                    var classes, cur, clazz, j, finalValue;
+
+                    classes = (value || "").match(rnotwhite) || [];
+
+                    cur = ele.className ?
+                        (" " + ele.className + " ").replace(rclass, " ") :
+                        "";
+
+                    if (cur) {
+                        j = 0;
+                        while ((clazz = classes[j++])) {
+                            // Remove *all* instances
+                            while (cur.indexOf(" " + clazz + " ") >= 0) {
+                                cur = cur.replace(" " + clazz + " ", " ");
+                            }
+                        }
+
+                        finalValue = value ? window.util.trim(cur) : "";
+                        if (ele.className !== finalValue) {
+                            ele.className = finalValue;
+                        }
+                    }
+                },
+                addEvent: function(element, type, callback) {
+                    if (element.addEventListener) {
+                        element.addEventListener(type, callback, false);
+                    } else if (element.attachEvent) {
+                        element.attachEvent('on' + type, callback)
+                    }
+                },
+                removeEvent: function(element, type, callback) {
+                    if (element.removeEventListener) {
+                        element.removeEventListener(type, callback, false);
+                    } else if (element.detachEvent) {
+                        element.detachEvent('on' + type, callback);
+                    }
+                },
+                getWinHeight: function() {
+                    return window.innerHeight || document.documentElement.clientHeight;
+                }
+            }
+        }());
+        (function() {
+            var cpYear = document.getElementById('cpYear');
+            if (cpYear) {
+                var y = new Date().getFullYear();
+                if (y > 2017) {
+                    cpYear.innerText = y;
+                }
+            }
+        }());
+        (function(util) {
+            if (!document.querySelectorAll) {
+                return;
+            }
+            var dropdns = document.querySelectorAll('.jsDropDown');
+
+            for (var i = 0; i < dropdns.length; i++) {
+                (function(dropdn) {
+                    util.addEvent(dropdn, 'touchend', function(e) {
+                        var onWinClicked;
+                        var evt = e || window.event;
+                        evt.stopPropagation && evt.stopPropagation();
+                        evt.cancelBubble = true;
+
+                        if (!util.hasClass(dropdn, 'unfold')) {
+                            util.addClass(dropdn, 'unfold');
+                            onWinClicked = function(e) {
+                                var evt = e || window.event;
+                                var target = evt.target || evt.srcElement;
+                                if (target !== dropdn) {
+                                    util.removeClass(dropdn, 'unfold');
+                                    util.removeEvent(window, 'touchend', onWinClicked);
+                                }
+                            }
+                            util.addEvent(window, 'touchend', onWinClicked)
+                        }
+                    });
+                }(dropdns[i]));
+            }
+        }(util));
+    </script>
+    <script defer>
+        var _mtac = {
+            "performanceMonitor": 1,
+            "senseQuery": 1
+        };
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "./js/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500404339");
+            mta.setAttribute("cid", "500435601");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
+    <script>
+        (function(util) {
+            var winScrollWatcher = function() {
+                var isScrolling = false;
+                var cbs = {};
+
+                function onWinScroll() {
+                    if (isScrolling) {
+                        return;
+                    }
+                    isScrolling = true;
+
+                    for (var p in cbs) {
+                        var func = cbs[p];
+                        if (Object.prototype.toString.call(func) === '[object Function]') {
+                            func();
+                        }
+                    }
+
+                    setTimeout(function() {
+                        isScrolling = false;
+                    }, 100);
+                }
+
+                return {
+                    subscribe: function(key, cb) {
+                        cbs[key] = cb;
+                    },
+                    unSubscribe: function(key) {
+                        delete cbs[key];
+                    },
+                    init: function() {
+                        util.addEvent(window, 'scroll', onWinScroll);
+                    }
+                };
+            }(util);
+
+            var statisticSection = document.getElementById('statisticSection');
+            var statisticSectionContent = document.getElementById('statisticSectionContent');
+
+            winScrollWatcher.subscribe('statisticSection', function() {
+                var top = statisticSection.getBoundingClientRect().top;
+                var winH = util.getWinHeight();
+                if (top < winH + 200 && !util.hasClass(statisticSection, 'animate')) {
+                    statisticSectionContent.style.backgroundImage = 'url(img/bg-statistic-map.jpg)';
+                    util.addClass(statisticSection, 'animate');
+                    winScrollWatcher.unSubscribe('statisticSection');
+                }
+            });
+
+            var capabilitySection = document.getElementById('capabilitySection');
+            winScrollWatcher.subscribe('capabilitySection', function() {
+                var top = capabilitySection.getBoundingClientRect().top;
+                var winH = util.getWinHeight();
+                if (top < winH + 200) {
+                    capabilitySection.style.backgroundImage = 'url(img/bg-capability.jpg)';
+                    winScrollWatcher.unSubscribe('capabilitySection');
+                }
+            });
+            winScrollWatcher.init();
+
+        }(window.util));
+    </script>
+</body>
+
+</html>

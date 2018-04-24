@@ -170,6 +170,12 @@ app.get('/routes-cn', function(req, res){
 	});
 });
 
+
+// Moban
+app.use('/moban', express.static('zzz'));
+
+
+
 // CSCI572 HW1 test page
 app.get('/csci572', function(req, res){
 	fs.readFile('csci572/csci572.html', function(err, file) {
