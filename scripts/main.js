@@ -69,6 +69,10 @@ function home () {
 	}
 	table.append(tr.append(td));
 	$('.content').append(table);
+	
+	// initialize all tooltip on the page
+	$("[rel='tooltip']").tooltip(); // Icons
+	$('[data-toggle="tooltip"]').tooltip(); // Text
 }
 
 function projects (pageNav) {
