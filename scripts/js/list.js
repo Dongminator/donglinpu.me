@@ -88,28 +88,41 @@ function loadList () {
  */
 function populateList (name, status, div) {
 	var li = $("<li>").addClass("list-group-item d-flex justify-content-between align-items-center").text(name);
+	var buttonDiv = $("<div>");
 	
-	var button = $("<button>").addClass("btn");
-	button.click(function (e) {
+	// change status button
+	var statusButton = $("<button>").addClass("btn pt-0 pb-0");
+	statusButton.click(function (e) {
 		ToggleListItem(e);
 	});
 	
-	var img = $("<img>").addClass("iconic-sprite").attr("src","/static/open-iconic/svg/circle-check.svg");
-	
-	button.append(img);
-	li.append(button);
+	var statusImg = $("<img>").addClass("iconic-sprite").attr("src","/static/open-iconic/svg/circle-check.svg");
+	statusButton.append(statusImg);
+	buttonDiv.append(statusButton);
 	
 	if (status == true) {
-		img.addClass("icon-circle-check-true");
+		statusImg.addClass("icon-circle-check-true");
 		li.addClass("disabled");
 	} else {
-		img.addClass("icon-circle-check-false");
+		statusImg.addClass("icon-circle-check-false");
 	}
 
+	// delete button
+	var deleteButton = $("<button>").addClass("btn pt-0 pb-0");
+	deleteButton.click(function (e) {
+		DeleteListItem(e);
+	});
+
+	var deleteImg = $("<img>").addClass("iconic-sprite").attr("src","/static/open-iconic/svg/trash.svg");
+	deleteButton.append(deleteImg);
+	buttonDiv.append(deleteButton);
+	
+	li.append(buttonDiv);
 	div.append(li);
 	
 	// inject only after dom has this item.
-	SVGInjector(img);
+	SVGInjector(statusImg);
+	SVGInjector(deleteImg);
 }
 
 /*
@@ -193,6 +206,30 @@ function ToggleListItem(e) {
 		});
 		
 	}
+}
+
+function DeleteListItem (e) {
+	var target = $( e.target );
+	
+	var parentLi = target.closest("li");
+	var parentSvg = target.closest("svg");
+	var itemName = parentLi.text().trim();
+	
+	if (target.is("button")) {
+		parentSvg = target.find("svg");
+	} else if (target.is("svg")) {
+		parentSvg = target;
+	}
+	
+	// not done
+	console.log("DELETE ITEM");
+//	DbUpdateStatus (itemName, true, function(){
+//		parentLi.addClass("disabled");
+//		parentSvg.removeClass("icon-circle-check-false");
+//		parentSvg.addClass("icon-circle-check-true");
+//	}, function () {
+//		console.log("failed to update in DB");
+//	});
 }
 
 function DbUpdateStatus (item, status, callBackSuccess, callBackFail) {
