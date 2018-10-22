@@ -1,3 +1,9 @@
+start mongod locally
+./bin/mongod
+
+connect to local mongo instance
+mongo
+
 show dbs
 use list
 

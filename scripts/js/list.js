@@ -75,35 +75,41 @@ function loadList () {
 		var shoppingDiv = $("#ShoppingList ul");
 		
 		$.each(todo, function(i, item) {
-		    console.log(item.name + " " + item.done);
-		    
-			var li = $("<li>").addClass("list-group-item d-flex justify-content-between align-items-center").text(item.name);
-			
-			var button = $("<button>").addClass("btn");
-			button.click(function (e) {
-				ToggleListItem(e);
-			});
-			
-			var img = $("<img>").addClass("iconic-sprite").attr("src","/static/open-iconic/svg/circle-check.svg");
-			SVGInjector(img);
-			
-			button.append(img);
-			li.append(button);
-			
-			var status = item.done;
-			if (status == true) {
-				img.addClass("icon-circle-check-true");
-				li.addClass("disabled");
-			} else {
-				img.addClass("icon-circle-check-false");
-				console.log("no");
-			}
-			todoDiv.append(li);
+			populateList (item.name, item.done, todoDiv);
 		});
 		
 		// create section for shopping
 		
 	});
+}
+
+/*
+ * Add an item to the list.
+ */
+function populateList (name, status, div) {
+	var li = $("<li>").addClass("list-group-item d-flex justify-content-between align-items-center").text(name);
+	
+	var button = $("<button>").addClass("btn");
+	button.click(function (e) {
+		ToggleListItem(e);
+	});
+	
+	var img = $("<img>").addClass("iconic-sprite").attr("src","/static/open-iconic/svg/circle-check.svg");
+	
+	button.append(img);
+	li.append(button);
+	
+	if (status == true) {
+		img.addClass("icon-circle-check-true");
+		li.addClass("disabled");
+	} else {
+		img.addClass("icon-circle-check-false");
+	}
+
+	div.append(li);
+	
+	// inject only after dom has this item.
+	SVGInjector(img);
 }
 
 /*
@@ -114,11 +120,6 @@ function addClicked() {
 	var addText = AddInput.val();
 	// add to database
 	InsertToList(addText, InsertToListSuccess, InsertToListFail);
-}
-
-function addItemToList (name, dom) {
-	var li = $("<li>").addClass("list-group-item").text(name);
-	dom.append(li);
 }
 
 function InsertToList(dataToSave, callBackSuccess, callBackFail) {
@@ -144,7 +145,7 @@ function InsertToListSuccess (data) {
 	console.log("InsertToListSuccess");
 	
 	if (data == "successfully inserted") {
-		addItemToList (AddInput.val(), $("#ToDoList ul"));
+		populateList(AddInput.val(), false, $("#ToDoList ul"));
 		AddInput.val("");
 	} else {
 		console.log("failed, see error:");
