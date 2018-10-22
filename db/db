@@ -1,0 +1,29 @@
+show dbs
+use list
+
+db.collection.find()
+	
+// create the user
+db.collection.insert({"user":{"id":1,"name":"donglin"}, "todo":[], "shopping":[]})
+
+// find document of this user by user.id
+db.collection.find({"user.id":1})
+
+
+// add an item to collection
+db.collection.update({"user.id":1},{"$push":{"todo":{"name":"apple","done":false}}})
+
+// find user id 1, todo name apple
+db.collection.find({"user.id":1,"todo.name":"apple"})
+
+// remove an item from array
+db.collection.update({"user.id":1},{"$pull":{"todo":"pear"}})
+
+// remove an object from document
+db.collection.update({"user.id":1,"todo.name":"apple"}, {$unset: {"done":true}})
+
+// update an item in the collection, use $ if dont know index, because the query contains todo.name, the $ sign will find the element in the todo array.
+db.collection.update({"user.id":1,"todo.name":"apple"}, {$set: {"todo.$.done":true}})
+
+// update all value of a field in an array: use $[]
+db.collection.update({"user.id":1},{$set:{"todo.$[].done":true}})

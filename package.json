@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "dependencies": {
     "aws-sdk": "*",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
     "express": "*",
     "less": "*",
+    "mongodb": "^3.1.6",
     "techan": "^0.8.0"
   },
   "engines": {

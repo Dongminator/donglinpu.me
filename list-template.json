@@ -1,0 +1,28 @@
+{
+	"user": {
+		"id": 1,
+		"name": "first"
+	},
+	"todo": [
+		{
+			"name": "a",
+			"done": "false"
+		},
+		{
+			"name": "b",
+			"done": "false"
+		}
+	],
+	"shopping": {
+		"curr": [
+			1,
+			2,
+			3,
+			4
+		],
+		"all": {
+			"1": "apple",
+			"2": "milk"
+		}
+	}
+}

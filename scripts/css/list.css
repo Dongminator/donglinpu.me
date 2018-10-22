@@ -1,0 +1,27 @@
+/* 
+html {
+	height:100%;
+}
+
+body {
+	height: 100%;
+	padding-top: 70px;
+}
+
+
+.container {
+	width:100%; height:100%;
+} */
+
+.iconic-sprite {
+	width: 20px;
+	height: 20px;
+}
+
+.icon-circle-check-true {
+	fill: lightgreen;
+}
+
+.icon-circle-check-false {
+	fill: lightgrey;
+}

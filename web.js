@@ -1,21 +1,35 @@
 var express = require('express');
 var fs = require('fs');
+var bodyParser  = require("body-parser");
 var http = require('http');
 var https = require('https');
 var app = express();
 var less = require('less');
 var aws = require('aws-sdk');
 
+require('dotenv').config();
 
+var MongoClient = require('mongodb').MongoClient;
+
+//Connection URL
+const url = process.env.list_db_url;
+
+//Database Name
+const dbName = process.env.list_db_name;
+
+//Collection Name
+const dbCollectionName = process.env.list_db_collection;
 
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY_ID;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_ACCESS_KEY;
 var S3_BUCKET = process.env.S3_BUCKET;
 
-
 var server = http.createServer(app);
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+app.use('/static', express.static('static'));
 app.use('/files', express.static('files'));
 app.use('/scripts', express.static('scripts'));
 app.use('/blog', express.static('blog'));
@@ -28,6 +42,7 @@ app.get('/', function(req, res){
 		res.end(file);
 	});
 });
+
 
 app.get('/less', function(req, res){
 	fs.readFile('less.html', function(err, file) {
@@ -390,10 +405,6 @@ var port = process.env.PORT || 3000;
 server.listen(port);
 
 
-
-
-
-
 //Projects page
 app.get('/stock', function(req, res){
 	fs.readFile('stock.html', function(err, file) {
@@ -487,5 +498,211 @@ app.get('/stock/:arg1/:arg2?', function(request, response){
 	});
 	req.end();
 });
+
+
+
+
+
+// list
+
+
+app.get('/list', function(req, res){
+	fs.readFile('list.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+
+/*
+{
+	user:UserId, 
+	name:dataToSave,
+	done:false}
+}
+ */ 
+app.post('/saveItem', function (req, res) {
+	console.log("===> saveItem called");
+    // retrieve user posted data from the body
+    var json = req.body;
+    
+    // format json
+    console.log(json);
+    
+//    InsertDocument(json);
+    UpdateDocument(json);	
+    
+    	res.send('successfully inserted');
+});
+
+app.post('/updateStatus', function (req, res) {
+	console.log("===> updateStatus called");
+    // retrieve user posted data from the body
+    var json = req.body;
+    
+    // format json
+    console.log(json);
+    
+//    InsertDocument(json);
+    UpdateStatus(json);	
+    
+    	res.send('successfully inserted');
+});
+
+
+app.get('/getItems', function (req, res) {
+	console.log("===> getItems called");
+	GetAllDocument(
+		function (docs) {
+			console.log(docs);
+			res.json(docs);
+		}
+	);
+
+});
+
+// getByUserId/id
+app.get('/getByUserId/:userId', function (req, res) {
+	var userId = req.params.userId;
+	GetByUserId(userId, function (docs) {
+		console.log(docs);
+		res.json(docs);
+	});
+});
+
+//database connection
+function InsertDocument (json, callback) {
+	MongoClient.connect(url, function(err, db) {
+		var dbo = db.db(dbName);
+		// Get the documents collection
+		const collection = dbo.collection(dbCollectionName);
+		// Insert some documents
+
+		collection.insertOne(
+			json, 
+			function(err, result) {
+				console.log("Inserted 3 documents into the collection");
+				console.log(result);
+				console.log(err);
+				if (callback) {
+					console.log("has callback");
+					callback();
+				}
+				db.close();
+				
+			}
+		);
+	});
+}
+
+
+/*
+ * db.collection.update({"user.id":1},{"$push":{"todo":{"name":"apple","done":false}}})
+{
+	user:UserId,
+	name:dataToSave,
+	done:false}
+}
+ */
+function UpdateDocument (json, callback) {
+	MongoClient.connect(url, function(err, db) {
+		var dbo = db.db(dbName);
+		// Get the documents collection
+		const collection = dbo.collection(dbCollectionName);
+		// Insert some documents
+
+		var statusBool = json.done === 'true';
+		collection.updateOne(
+			{"user.id":parseInt(json.user)},
+			{$push: {"todo":{"name":json.name,"done":statusBool}}}, 
+			{
+				upsert:true
+			},
+			function(err, result) {
+				console.log("Inserted 3 documents into the collection");
+				console.log(result);
+				console.log(err);
+				if (callback) {
+					console.log("has callback");
+					callback();
+				}
+				db.close();
+				
+			}
+		);
+	});
+}
+
+/*
+ * db.collection.update({"user.id":1,"todo.name":"apple"}, {$set: {"todo.$.done":true}})
+{
+	user:UserId, 
+	name:item,
+	done:status
+}
+ */
+function UpdateStatus (json, callback) {
+	MongoClient.connect(url, function(err, db) {
+		var dbo = db.db(dbName);
+		// Get the documents collection
+		const collection = dbo.collection(dbCollectionName);
+		// Insert some documents
+		
+		var statusBool = (json.done === 'true');
+		collection.updateOne(
+			{"user.id":parseInt(json.user), "todo.name":json.name},
+			{$set: {"todo.$.done":statusBool}}, 
+			{
+				upsert:true
+			},
+			function(err, result) {
+				console.log("Inserted 3 documents into the collection");
+				console.log(result);
+				console.log(err);
+				if (callback) {
+					console.log("has callback");
+					callback();
+				}
+				db.close();
+			}
+		);
+	});
+}
+
+
+function GetAllDocument (callback) {
+	MongoClient.connect(url, function(err, db) {
+		var dbo = db.db(dbName);
+		// Get the documents collection
+		const collection = dbo.collection(dbCollectionName);
+		// Find some documents
+		collection.find({}).toArray(function(err, docs) {
+			console.log("Found the following records");
+			console.log(docs);
+			callback(docs);
+		});
+	});
+}
+
+
+// search collection by {"user.id":1}
+function GetByUserId (idint, callback) {
+	var id = parseInt(idint);
+	console.log(id);
+	console.log(url);
+	console.log(dbName);
+	MongoClient.connect(url, function(err, db) {
+		console.log(err);
+		
+		var dbo = db.db(dbName);
+		// Get the documents collection
+		const collection = dbo.collection(dbCollectionName);
+		// Find some documents
+		collection.find({"user.id":id}).toArray(function(err, docs) {
+			callback(docs);
+		});
+	});
+}
 
 
