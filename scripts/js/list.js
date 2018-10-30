@@ -31,8 +31,6 @@ var UserId = 1;
 
 // jquery 3.0 recommended syntax
 $(function() {
-	console.log("ready");
-	
 	initUi ()
 	
 	loadList();
@@ -208,29 +206,6 @@ function ToggleListItem(e) {
 	}
 }
 
-function DeleteListItem (e) {
-	var target = $( e.target );
-	
-	var parentLi = target.closest("li");
-	var parentSvg = target.closest("svg");
-	var itemName = parentLi.text().trim();
-	
-	if (target.is("button")) {
-		parentSvg = target.find("svg");
-	} else if (target.is("svg")) {
-		parentSvg = target;
-	}
-	
-	// not done
-	console.log("DELETE ITEM");
-//	DbUpdateStatus (itemName, true, function(){
-//		parentLi.addClass("disabled");
-//		parentSvg.removeClass("icon-circle-check-false");
-//		parentSvg.addClass("icon-circle-check-true");
-//	}, function () {
-//		console.log("failed to update in DB");
-//	});
-}
 
 function DbUpdateStatus (item, status, callBackSuccess, callBackFail) {
 	var postReqData = {
@@ -250,11 +225,41 @@ function DbUpdateStatus (item, status, callBackSuccess, callBackFail) {
 	});
 }
 
-function getTest() {
-	$.get( "getItems", function(data) {
+function DeleteListItem (e) {
+	var target = $( e.target );
+	
+	var parentLi = target.closest("li");
+	
+	// get the name of the item to be deleted
+	var itemName = parentLi.text().trim();
+	
+	DbDeleteItem (itemName, function(data){
+		// remove item from UL
+		parentLi.remove();
 		console.log(data);
+	}, function () {
+		console.log("failed to delete item in DB");
 	});
 }
+
+function DbDeleteItem (item, callBackSuccess, callBackFail) {
+	var postReqData = {
+			user:UserId, 
+			name:item
+	};
+	
+	$.post(
+			"deleteItem",
+			postReqData,
+			function(data){
+				callBackSuccess(data);
+			}
+	)
+	.fail(function() {
+		callBackFail();
+	});
+}
+
 
 function getAll() {
 	$.get( "getAll", function(data) {

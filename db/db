@@ -25,11 +25,15 @@ db.collection.find({"user.id":1,"todo.name":"apple"})
 // remove an item from array
 db.collection.update({"user.id":1},{"$pull":{"todo":"pear"}})
 
-// remove an object from document
+// remove an object from document. If todo.name doesnt return anything, it will not do anything. 
 db.collection.update({"user.id":1,"todo.name":"apple"}, {$unset: {"done":true}})
+
+// Delete an object by name from array
+db.collection.update({"user.id":1},{$pull:{"todo":{"name":"zzzzzzz"}}})
 
 // update an item in the collection, use $ if dont know index, because the query contains todo.name, the $ sign will find the element in the todo array.
 db.collection.update({"user.id":1,"todo.name":"apple"}, {$set: {"todo.$.done":true}})
 
 // update all value of a field in an array: use $[]
 db.collection.update({"user.id":1},{$set:{"todo.$[].done":true}})
+

@@ -551,25 +551,26 @@ app.post('/updateStatus', function (req, res) {
 });
 
 
-app.get('/getItems', function (req, res) {
-	console.log("===> getItems called");
-	GetAllDocument(
-		function (docs) {
-			console.log(docs);
-			res.json(docs);
-		}
-	);
-
-});
-
 // getByUserId/id
 app.get('/getByUserId/:userId', function (req, res) {
 	var userId = req.params.userId;
 	GetByUserId(userId, function (docs) {
-		console.log(docs);
 		res.json(docs);
 	});
 });
+
+app.post('/deleteItem', function (req, res) {
+	console.log("===> deleteItem called");
+    // retrieve user posted data from the body
+    var json = req.body;
+    
+//    InsertDocument(json);
+    DeleteItem(json, function(){
+    		res.send('successfully deleted!');
+    });	
+});
+
+
 
 //database connection
 function InsertDocument (json, callback) {
@@ -671,30 +672,10 @@ function UpdateStatus (json, callback) {
 }
 
 
-function GetAllDocument (callback) {
-	MongoClient.connect(url, function(err, db) {
-		var dbo = db.db(dbName);
-		// Get the documents collection
-		const collection = dbo.collection(dbCollectionName);
-		// Find some documents
-		collection.find({}).toArray(function(err, docs) {
-			console.log("Found the following records");
-			console.log(docs);
-			callback(docs);
-		});
-	});
-}
-
-
 // search collection by {"user.id":1}
 function GetByUserId (idint, callback) {
 	var id = parseInt(idint);
-	console.log(id);
-	console.log(url);
-	console.log(dbName);
 	MongoClient.connect(url, function(err, db) {
-		console.log(err);
-		
 		var dbo = db.db(dbName);
 		// Get the documents collection
 		const collection = dbo.collection(dbCollectionName);
@@ -705,4 +686,32 @@ function GetByUserId (idint, callback) {
 	});
 }
 
+/*
+ * db.collection.update({"user.id":1},{$pull:{"todo":{"name":"zzzzzzz"}}})
+{
+	user:'UserId',
+	name:'dataToDelete'
+}
+ */
+function DeleteItem (json, callback) {
+	MongoClient.connect(url, function(err, db) {
+		var dbo = db.db(dbName);
+		// Get the documents collection
+		const collection = dbo.collection(dbCollectionName);
 
+		collection.updateOne(
+			{"user.id":parseInt(json.user)},
+			{$pull: {"todo":{"name":json.name}}}, 
+			function(err, result) {
+				console.log("Delete document from the collection");
+				console.log(result);
+				console.log(err);
+				if (callback) {
+					console.log("has callback");
+					callback();
+				}
+				db.close();
+			}
+		);
+	});
+}
