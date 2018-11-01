@@ -1,31 +1,38 @@
 
 
-var GlobalList = 
-{
-		"todo": [{
-			"name": "buy something",
-			"done": "false"
-		},{
-			"name": "something else",
-			"done": "false"
-		},{
-			"name": "yes",
-			"done": "true"
-		},{
-			"name": "no",
-			"done": "false"
-		}],
+//var GlobalList = 
+//{
+//		"todo": [{
+//			"name": "buy something",
+//			"done": "false"
+//		},{
+//			"name": "something else",
+//			"done": "false"
+//		},{
+//			"name": "yes",
+//			"done": "true"
+//		},{
+//			"name": "no",
+//			"done": "false"
+//		}],
+//
+//		"shopping": {
+//			"curr": [1,2,3,4],
+//			"all": {
+//				"1": "apple",
+//				"2": "milk"
+//			}
+//		}
+//};
 
-		"shopping": {
-			"curr": [1,2,3,4],
-			"all": {
-				"1": "apple",
-				"2": "milk"
-			}
-		}
-};
+
+var testobj;
 
 var AddInput; // $("#addInput").val();
+var TodoIncompleteDiv; // $("#ToDoListIncomplete ul");
+var TodoCompletedDiv; // $("#ToDoListCompleted ul");
+var ShoppingDiv; // $("#ShoppingList ul");
+
 
 var UserId = 1;
 
@@ -41,21 +48,29 @@ function initUi () {
     SVGInjector(mySVGsToInject);
     
 	AddInput = $("#addInput");
+	TodoIncompleteDiv = $("#ToDoListIncomplete ul");
+	TodoCompletedDiv = $("#ToDoListCompleted ul");
+	ShoppingDiv = $("#ShoppingList ul");
 }
 
 
 /*
  * this method retrieves both todo list and shopping list from DB
  */
+
+
 function loadList () {
 	
 	// query {"user.id":1}
 	getByUserId(UserId, function(data){
-		console.log(data);
-		
+		testobj = data;
 		// todo: chec3k [0]
 		// TODO: potential BUG: data emtpy.
 		var todo = data[0].todo;
+		
+		var todoCompleted = $.grep(todo, function(n,i){ return n.done });
+		var todoIncomplete = $.grep(todo, function(n,i){ return !n.done });
+
 		var shopping = data[0].shopping;
 		
 		// create section for todo
@@ -69,11 +84,14 @@ function loadList () {
 	</ul>
 		 */
 
-		var todoDiv = $("#ToDoList ul");
-		var shoppingDiv = $("#ShoppingList ul");
 		
-		$.each(todo, function(i, item) {
-			populateList (item.name, item.done, todoDiv);
+		
+		$.each(todoIncomplete, function(i, item) {
+			populateList (item.name, item.done, TodoIncompleteDiv);
+		});
+		
+		$.each(todoCompleted, function(i, item) {
+			populateList (item.name, item.done, TodoCompletedDiv);
 		});
 		
 		// create section for shopping
@@ -156,7 +174,7 @@ function InsertToListSuccess (data) {
 	console.log("InsertToListSuccess");
 	
 	if (data == "successfully inserted") {
-		populateList(AddInput.val(), false, $("#ToDoList ul"));
+		populateList(AddInput.val(), false, TodoIncompleteDiv);
 		AddInput.val("");
 	} else {
 		console.log("failed, see error:");
@@ -183,22 +201,34 @@ function ToggleListItem(e) {
 	
 	// done
 	if (parentSvg.hasClass("icon-circle-check-true")) {
-		console.log("clicked DONE");
 		DbUpdateStatus (itemName, false, function(){
-			parentLi.removeClass("disabled");
+			
+			parentLi.removeClass("disabled"); // text style
+			
+			// Set Icon Style
 			parentSvg.removeClass("icon-circle-check-true");
 			parentSvg.addClass("icon-circle-check-false");
+			
+			// move <li> to NOT DONE
+			parentLi.detach().appendTo(TodoIncompleteDiv);
+			
 		}, function () {
 			console.log("failed to update in DB");
 		});
 		
 	} else {
 		// not done
-		console.log("clicked TO DO");
 		DbUpdateStatus (itemName, true, function(){
-			parentLi.addClass("disabled");
+			
+			parentLi.addClass("disabled");  // text style
+			
+			// Set Icon Style
 			parentSvg.removeClass("icon-circle-check-false");
 			parentSvg.addClass("icon-circle-check-true");
+			
+			// move <li> to DONE
+			parentLi.detach().appendTo(TodoCompletedDiv);
+			
 		}, function () {
 			console.log("failed to update in DB");
 		});

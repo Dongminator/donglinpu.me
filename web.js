@@ -585,7 +585,7 @@ function InsertDocument (json, callback) {
 			function(err, result) {
 				console.log("Inserted 3 documents into the collection");
 				console.log(result);
-				console.log(err);
+				console.log(err); // err is null
 				if (callback) {
 					console.log("has callback");
 					callback();
@@ -621,9 +621,8 @@ function UpdateDocument (json, callback) {
 				upsert:true
 			},
 			function(err, result) {
-				console.log("Inserted 3 documents into the collection");
 				console.log(result);
-				console.log(err);
+				console.log(err); // err is null
 				if (callback) {
 					console.log("has callback");
 					callback();
@@ -658,9 +657,8 @@ function UpdateStatus (json, callback) {
 				upsert:true
 			},
 			function(err, result) {
-				console.log("Inserted 3 documents into the collection");
 				console.log(result);
-				console.log(err);
+				console.log(err); // err is null
 				if (callback) {
 					console.log("has callback");
 					callback();
@@ -705,7 +703,7 @@ function DeleteItem (json, callback) {
 			function(err, result) {
 				console.log("Delete document from the collection");
 				console.log(result);
-				console.log(err);
+				console.log(err); // err is null
 				if (callback) {
 					console.log("has callback");
 					callback();
