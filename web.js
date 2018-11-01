@@ -11,6 +11,7 @@ require('dotenv').config();
 
 var MongoClient = require('mongodb').MongoClient;
 
+var mongodb;
 //Connection URL
 const url = process.env.list_db_url;
 
@@ -19,6 +20,15 @@ const dbName = process.env.list_db_name;
 
 //Collection Name
 const dbCollectionName = process.env.list_db_collection;
+
+var port = process.env.PORT || 3000;
+
+//Create connection pool to mongodb
+MongoClient.connect(url, function(err, db) {  
+	mongodb = db.db(dbName);
+	server.listen(port);
+});
+
 
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY_ID;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_ACCESS_KEY;
@@ -401,9 +411,6 @@ function sendRequest (options, response) {
 	req.end();
 }
 
-var port = process.env.PORT || 3000;
-server.listen(port);
-
 
 //Projects page
 app.get('/stock', function(req, res){
@@ -571,30 +578,23 @@ app.post('/deleteItem', function (req, res) {
 });
 
 
-
 //database connection
 function InsertDocument (json, callback) {
-	MongoClient.connect(url, function(err, db) {
-		var dbo = db.db(dbName);
-		// Get the documents collection
-		const collection = dbo.collection(dbCollectionName);
-		// Insert some documents
-
-		collection.insertOne(
-			json, 
-			function(err, result) {
-				console.log("Inserted 3 documents into the collection");
-				console.log(result);
-				console.log(err); // err is null
-				if (callback) {
-					console.log("has callback");
-					callback();
-				}
-				db.close();
-				
+	// Get the documents collection
+	const collection = mongodb.collection(dbCollectionName);
+	// Insert some documents
+	collection.insertOne(
+		json, 
+		function(err, result) {
+			console.log("Inserted 3 documents into the collection");
+			console.log(result);
+			console.log(err); // err is null
+			if (callback) {
+				console.log("has callback");
+				callback();
 			}
-		);
-	});
+		}
+	);
 }
 
 
@@ -607,31 +607,25 @@ function InsertDocument (json, callback) {
 }
  */
 function UpdateDocument (json, callback) {
-	MongoClient.connect(url, function(err, db) {
-		var dbo = db.db(dbName);
-		// Get the documents collection
-		const collection = dbo.collection(dbCollectionName);
-		// Insert some documents
-
-		var statusBool = json.done === 'true';
-		collection.updateOne(
-			{"user.id":parseInt(json.user)},
-			{$push: {"todo":{"name":json.name,"done":statusBool}}}, 
-			{
-				upsert:true
-			},
-			function(err, result) {
-				console.log(result);
-				console.log(err); // err is null
-				if (callback) {
-					console.log("has callback");
-					callback();
-				}
-				db.close();
-				
+	// Get the documents collection
+	const collection = mongodb.collection(dbCollectionName);
+	// Insert some documents
+	var statusBool = json.done === 'true';
+	collection.updateOne(
+		{"user.id":parseInt(json.user)},
+		{$push: {"todo":{"name":json.name,"done":statusBool}}}, 
+		{
+			upsert:true
+		},
+		function(err, result) {
+			console.log(result);
+			console.log(err); // err is null
+			if (callback) {
+				console.log("has callback");
+				callback();
 			}
-		);
-	});
+		}
+	);
 }
 
 /*
@@ -643,44 +637,36 @@ function UpdateDocument (json, callback) {
 }
  */
 function UpdateStatus (json, callback) {
-	MongoClient.connect(url, function(err, db) {
-		var dbo = db.db(dbName);
-		// Get the documents collection
-		const collection = dbo.collection(dbCollectionName);
-		// Insert some documents
-		
-		var statusBool = (json.done === 'true');
-		collection.updateOne(
-			{"user.id":parseInt(json.user), "todo.name":json.name},
-			{$set: {"todo.$.done":statusBool}}, 
-			{
-				upsert:true
-			},
-			function(err, result) {
-				console.log(result);
-				console.log(err); // err is null
-				if (callback) {
-					console.log("has callback");
-					callback();
-				}
-				db.close();
+	// Get the documents collection
+	const collection = mongodb.collection(dbCollectionName);
+	// Insert some documents
+	var statusBool = (json.done === 'true');
+	collection.updateOne(
+		{"user.id":parseInt(json.user), "todo.name":json.name},
+		{$set: {"todo.$.done":statusBool}}, 
+		{
+			upsert:true
+		},
+		function(err, result) {
+			console.log(result);
+			console.log(err); // err is null
+			if (callback) {
+				console.log("has callback");
+				callback();
 			}
-		);
-	});
+		}
+	);
 }
 
 
 // search collection by {"user.id":1}
 function GetByUserId (idint, callback) {
 	var id = parseInt(idint);
-	MongoClient.connect(url, function(err, db) {
-		var dbo = db.db(dbName);
-		// Get the documents collection
-		const collection = dbo.collection(dbCollectionName);
-		// Find some documents
-		collection.find({"user.id":id}).toArray(function(err, docs) {
-			callback(docs);
-		});
+	// Get the documents collection
+	const collection = mongodb.collection(dbCollectionName);
+	// Find some documents
+	collection.find({"user.id":id}).toArray(function(err, docs) {
+		callback(docs);
 	});
 }
 
@@ -692,24 +678,19 @@ function GetByUserId (idint, callback) {
 }
  */
 function DeleteItem (json, callback) {
-	MongoClient.connect(url, function(err, db) {
-		var dbo = db.db(dbName);
-		// Get the documents collection
-		const collection = dbo.collection(dbCollectionName);
-
-		collection.updateOne(
-			{"user.id":parseInt(json.user)},
-			{$pull: {"todo":{"name":json.name}}}, 
-			function(err, result) {
-				console.log("Delete document from the collection");
-				console.log(result);
-				console.log(err); // err is null
-				if (callback) {
-					console.log("has callback");
-					callback();
-				}
-				db.close();
+	// Get the documents collection
+	const collection = mongodb.collection(dbCollectionName);
+	collection.updateOne(
+		{"user.id":parseInt(json.user)},
+		{$pull: {"todo":{"name":json.name}}}, 
+		function(err, result) {
+			console.log("Delete document from the collection");
+			console.log(result);
+			console.log(err); // err is null
+			if (callback) {
+				console.log("has callback");
+				callback();
 			}
-		);
-	});
+		}
+	);
 }
