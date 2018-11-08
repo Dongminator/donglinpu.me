@@ -38,10 +38,48 @@ var UserId = 1;
 
 // jquery 3.0 recommended syntax
 $(function() {
-	initUi ()
+	
+	// check login
+	
+//	initUi ();
+//	
+//	loadList();
+});
+
+function CheckLogin () {
+	console.log("checking login...");
+	FB.getLoginStatus(function(response) {
+		console.log(response);
+		if (response.status === 'connected') {
+			console.log("connected...");
+			Authenticated ();
+			$("#fb-logout-btn").removeClass("d-none").click(function(){
+				FbLogout();
+			});
+		} else {
+			console.log("NOT logged in. Making login button visible...");
+			$(".fb-login-button").removeClass("d-none");
+		}
+//	    statusChangeCallback(response);
+	});
+}
+
+function Authenticated () {
+	console.log("proceed with content.");
+	
+	initUi ();
 	
 	loadList();
-});
+}
+
+function FbLogout() {
+	console.log("logging out fb...");
+	FB.logout(function(response) {
+		// Person is now logged out
+		console.log(response);
+		window.location.reload();
+	});
+}
 
 function initUi () {
 	var mySVGsToInject = document.querySelectorAll('.iconic-sprite');
