@@ -36,6 +36,15 @@ var S3_BUCKET = process.env.S3_BUCKET;
 
 var server = http.createServer(app);
 
+var forceSsl = function (req, res, next) {
+	if (req.headers['x-forwarded-proto'] !== 'https') {
+		return res.redirect(['https://', req.get('Host'), req.url].join(''));
+	}
+	return next();
+};
+app.use(forceSsl);
+ 
+ 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -44,10 +53,7 @@ app.use('/files', express.static('files'));
 app.use('/scripts', express.static('scripts'));
 app.use('/blog', express.static('blog'));
 
-app.get('*', function(req, res) {  
-    res.redirect('https://' + req.headers.host + req.url);
-});
-    
+
 app.get('/', function(req, res){
 	fs.readFile('index.html', function(err, file) {
 		res.setHeader('Content-Type', 'text/html');
