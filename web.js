@@ -44,7 +44,10 @@ app.use('/files', express.static('files'));
 app.use('/scripts', express.static('scripts'));
 app.use('/blog', express.static('blog'));
 
-
+app.get('*', function(req, res) {  
+    res.redirect('https://' + req.headers.host + req.url);
+});
+    
 app.get('/', function(req, res){
 	fs.readFile('index.html', function(err, file) {
 		res.setHeader('Content-Type', 'text/html');
