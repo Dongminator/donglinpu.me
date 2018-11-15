@@ -21,14 +21,20 @@ const dbName = process.env.list_db_name;
 //Collection Name
 const dbCollectionName = process.env.list_db_collection;
 
+//Run separate https server if on localhost
+var privateKey = fs.readFileSync('localhost/localhost.key').toString();
+var certificate = fs.readFileSync('localhost/localhost.crt').toString();
+
+var options = {
+  key : privateKey
+, cert : certificate
+}
+
 var port = process.env.PORT || 3000;
+process.env['PORT'] = process.env.PORT || 4000; // Used by https on localhost
 
-//Create connection pool to mongodb
-MongoClient.connect(url, function(err, db) {  
-	mongodb = db.db(dbName);
-	server.listen(port);
-});
-
+console.log(port);
+console.log(process.env['PORT']);
 
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY_ID;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_ACCESS_KEY;
@@ -36,13 +42,32 @@ var S3_BUCKET = process.env.S3_BUCKET;
 
 var server = http.createServer(app);
 
-var forceSsl = function (req, res, next) {
-	if (req.headers['x-forwarded-proto'] !== 'https') {
-		return res.redirect(['https://', req.get('Host'), req.url].join(''));
-	}
-	return next();
-};
-app.use(forceSsl);
+
+//Create connection pool to mongodb
+MongoClient.connect(url, function(err, db) {  
+	mongodb = db.db(dbName);
+	server.listen(port, function () {
+	    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+	});
+	
+	if (process.env.NODE_ENV != 'production') {
+	    https.createServer(options, app).listen(process.env.PORT, function () {
+	        console.log("Express server listening with https on port %d in %s mode", this.address().port, app.settings.env);
+	    });
+	};
+});
+
+
+if (process.env.NODE_ENV === 'production') {
+	// Force redirect of HTTP to HTTPS
+	var forceSsl = function (req, res, next) {
+		if (req.headers['x-forwarded-proto'] !== 'https') {
+			return res.redirect(['https://', req.get('Host'), req.url].join(''));
+		}
+		return next();
+	};
+	app.use(forceSsl);
+}
  
  
 app.use(bodyParser.urlencoded({ extended: false }));
