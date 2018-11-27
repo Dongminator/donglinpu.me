@@ -52,7 +52,11 @@ function CheckLogin () {
 		console.log(response);
 		if (response.status === 'connected') {
 			console.log("connected...");
+			FB.api('/me', function(response) {
+				console.log('Good to see you, ' + response.name + '.');
+			});
 			Authenticated ();
+			$(".fb-login-button").addClass("d-none");
 			$("#fb-logout-btn").removeClass("d-none").click(function(){
 				FbLogout();
 			});
@@ -61,7 +65,28 @@ function CheckLogin () {
 			$(".fb-login-button").removeClass("d-none");
 		}
 //	    statusChangeCallback(response);
-	});
+	}, true);
+}
+
+
+function test_login() {
+    FB.login(function(response) {
+	    // handle the response
+	    console.log(response);
+    });            
+}
+
+function test_logout() {
+    FB.logout(function(response) {
+      // user is now logged out
+    	console.log(response);
+    });
+}
+
+function test_getstatus () {
+	FB.getLoginStatus(function(response) {
+		console.log(response);
+	}, true);
 }
 
 function Authenticated () {
