@@ -25,26 +25,32 @@ function CheckLogin () {
 			FbToken = response.authResponse.accessToken;
 			
 			Authenticated ();
-
-			$(".fb-login-button").addClass("d-none");
-			$("#fb-logout-btn").removeClass("d-none").click(function(){
-				FbLogout();
-			});
 		} else {
-			console.log("NOT logged in. Making login button visible...");
-			$(".fb-login-button").removeClass("d-none");
+			NotLoggedIn();
 		}
-//	    statusChangeCallback(response);
 	}, true);
 }
 
 
 function Authenticated () {
 	console.log("proceed with content.");
+//	$(".fb-login-button").addClass("d-none").removeClass("d-flex");
+	$(".fb-login-button").remove();
+	
+	$("#fb-logout-btn").removeClass("d-none").click(function(){
+		FbLogout();
+	});
+	
+	$(".content").removeClass("d-none");
 	
 	InitUi ();
 	
 	LoadList();
+}
+
+function NotLoggedIn () {
+	console.log("NOT logged in. Making login button visible...");
+	$(".fb-login-button").removeClass("d-none");
 }
 
 function FbLogout() {
@@ -312,7 +318,6 @@ function getByUserId (id, callback) {
 			"getByUserId", 
 			postReqData,
 			function(data) {
-				console.log(data);
 				callback(data);
 			});
 }
