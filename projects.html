@@ -2,19 +2,25 @@
 <html lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF8">
-    <title>Donglin Pu</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="./scripts/Bootstrap/css/bootstrap.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- ensure proper rendering and touch zooming on phone -->
+	
+	<title>Donglin Pu - projects</title>
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous">
 	
 	<link href="./scripts/css/main.css" rel="stylesheet">
 
-	<script src="./scripts/jquery-1.11.0.min.js"></script>
-	
-	
+	<script src="https://code.jquery.com/jquery-3.3.1.js"
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		crossorigin="anonymous"></script>
+
 	<!-- Add mousewheel plugin (this is optional) -->
 	<script type="text/javascript" src="./scripts/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
-
+	
 	<!-- Add fancyBox main JS and CSS files -->
 	<script type="text/javascript" src="./scripts/fancybox/jquery.fancybox.js?v=2.1.4"></script>
 	<link rel="stylesheet" type="text/css" href="./scripts/fancybox/jquery.fancybox.css?v=2.1.4" media="screen" />
@@ -22,7 +28,6 @@
 	<!-- Add Button helper (this is optional) -->
 	<link rel="stylesheet" type="text/css" href="./scripts/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
 	<script type="text/javascript" src="./scripts/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-	
 	
 	<!-- Add Thumbnail helper (this is optional) -->
 	<link rel="stylesheet" type="text/css" href="./scripts/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
@@ -32,52 +37,44 @@
 	<script type="text/javascript" src="./scripts/fancybox/helpers/jquery.fancybox-media.js?v=1.0.5"></script>
 </head>
 
-<body style="">
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-				</button>
-          		<a class="navbar-brand" href="http://donglinpu.me">Donglin Pu</a>
-        	</div>
-        	<div class="collapse navbar-collapse">
-          		<ul class="nav navbar-nav">
-            		<li class="dropdown">
-            			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            				Projects <span class="caret"></span>
-            			</a>
-            			<ul id="proj_dropdown" class="dropdown-menu">
-            				<!-- 
-            				<li>
-            					<a href="a.com">a</a>
-            				</li>
-            				 -->
-            			</ul>
-            		
-            		<li class="disabled"><a href="/#">Interests</a></li>
-            		<li class="disabled"><a href="/#">About</a></li>
-            		<li><a href="/travel2014"><b>Travel 2014</b></a></li>
-         		 </ul>
-         		 <ul class="nav navbar-nav navbar-right">
-         		 	<li><a href="./files/CV.pdf" target="_blank">Resume.EN</a></li>
-         		 	<li><a href="./files/CV-Chinese.pdf" target="_blank">Resume.中文</a></li>
-         		 	<li><a href="./files/GPA.pdf" target="_blank">GPA Evaluated by WES</a></li>
-         		 </ul>
-       		</div><!--/.nav-collapse -->
-      	</div>
-    </div>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
+		<a class="navbar-brand" href="/">Donglin Pu</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="proj_dropdown">
+						<!-- <a class="dropdown-item" href="#">Action</a> -->
+					</div></li>
+				<li class="nav-item"><a class="nav-link" href="/referral">Referral</a></li>
+				<li class="nav-item"><a class="nav-link" href="/#">Interests</a></li>
+				<li class="nav-item"><a class="nav-link" href="/#">About</a></li>
+				<li class="nav-item"><a class="nav-link" href="/travel2014"><strong>Travel 2014</strong></a></li>
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="./files/CV.pdf"
+					target="_blank">Resume</a></li>
+				<!--<li><a href="./files/CV-Chinese.pdf" target="_blank">Resume.中文</a></li> -->
+				<li class="nav-item"><a class="nav-link" href="./files/GPA.pdf"
+					target="_blank">GPA Evaluated by WES</a></li>
+			</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</nav>
     
     <div class="container">
 		<div class="row row-offcanvas row-offcanvas-right">
 			<div class="col-sm-3 sidebar-offcanvas" id="proj-nav" role="navigation">
 				<div class="list-group">
-				
 				<!-- Dynamicall generated from content.xml -->
 				<!-- 	<a href="#" class="list-group-item active">Proj1</a>  -->
 				</div>
-			
 			</div>
 			
 			<div class="col-sm-9" id="proj-main">
@@ -89,16 +86,22 @@
 				 -->
 			</div>
 			
-			
 		</div>
     </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./scripts/Bootstrap/js/bootstrap.min.js"></script>
-  
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+		
 	<script src="./scripts/template.js"></script>
 	<script src="./scripts/projects.js"></script>
 	

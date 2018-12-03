@@ -16,10 +16,11 @@ function populateNavigation () {
 	
 	console.log(projects);
 	// Populate navigation #nyu-proj-nav.
+	
+	// <a class="dropdown-item" href="#">Action</a>
 	for (var i = 0; i < projects.length; i++) {
 		var project_id = projects[i].getElementsByTagName('id')[0].textContent;
 		var project_alias = projects[i].getElementsByTagName('shortened')[0].textContent;
-		var a = $('<a></a>').attr('href', '/projects?proj=' + project_id).text(project_alias);
-		var li = $('<li></li>').append(a).appendTo("#proj_dropdown");
+		var a = $('<a></a>').addClass("dropdown-item").attr('href', '/projects?proj=' + project_id).text(project_alias).appendTo("#proj_dropdown");
 	}
 }
