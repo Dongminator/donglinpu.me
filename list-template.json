@@ -1,7 +1,9 @@
 {
+	"_id": ObjectId(),
 	"user": {
 		"id": 1,
-		"name": "first"
+		"name": "first",
+		"facebookId": ""
 	},
 	"todo": [
 		{
@@ -25,4 +27,12 @@
 			"2": "milk"
 		}
 	}
+}
+{
+	"_id": ObjectId("5c0474aadbe5f8fa6332605e"),
+	"user": {
+		"facebookId": 10217524368599304
+	},
+	"shopping": [],
+	"todo": []
 }

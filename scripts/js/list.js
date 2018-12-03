@@ -1,31 +1,4 @@
 
-
-//var GlobalList = 
-//{
-//		"todo": [{
-//			"name": "buy something",
-//			"done": "false"
-//		},{
-//			"name": "something else",
-//			"done": "false"
-//		},{
-//			"name": "yes",
-//			"done": "true"
-//		},{
-//			"name": "no",
-//			"done": "false"
-//		}],
-//
-//		"shopping": {
-//			"curr": [1,2,3,4],
-//			"all": {
-//				"1": "apple",
-//				"2": "milk"
-//			}
-//		}
-//};
-
-
 var testobj;
 
 var AddInput; // $("#addInput").val();
@@ -34,28 +7,25 @@ var TodoCompletedDiv; // $("#ToDoListCompleted ul");
 var ShoppingDiv; // $("#ShoppingList ul");
 
 
-var UserId = 1;
+var UserId;
+
+var FbToken = "";
 
 // jquery 3.0 recommended syntax
 $(function() {
-	
-	// check login
-	
-//	initUi ();
-//	
-//	loadList();
+	// dont do anything here. wait fb sdk load
 });
 
+// After FB SDK is loaded, this is run. 
 function CheckLogin () {
 	console.log("checking login...");
 	FB.getLoginStatus(function(response) {
 		console.log(response);
 		if (response.status === 'connected') {
-			console.log("connected...");
-			FB.api('/me', function(response) {
-				console.log('Good to see you, ' + response.name + '.');
-			});
+			FbToken = response.authResponse.accessToken;
+			
 			Authenticated ();
+
 			$(".fb-login-button").addClass("d-none");
 			$("#fb-logout-btn").removeClass("d-none").click(function(){
 				FbLogout();
@@ -69,32 +39,12 @@ function CheckLogin () {
 }
 
 
-function test_login() {
-    FB.login(function(response) {
-	    // handle the response
-	    console.log(response);
-    });            
-}
-
-function test_logout() {
-    FB.logout(function(response) {
-      // user is now logged out
-    	console.log(response);
-    });
-}
-
-function test_getstatus () {
-	FB.getLoginStatus(function(response) {
-		console.log(response);
-	}, true);
-}
-
 function Authenticated () {
 	console.log("proceed with content.");
 	
-	initUi ();
+	InitUi ();
 	
-	loadList();
+	LoadList();
 }
 
 function FbLogout() {
@@ -106,7 +56,7 @@ function FbLogout() {
 	});
 }
 
-function initUi () {
+function InitUi () {
 	var mySVGsToInject = document.querySelectorAll('.iconic-sprite');
     SVGInjector(mySVGsToInject);
     
@@ -122,19 +72,18 @@ function initUi () {
  */
 
 
-function loadList () {
-	
+function LoadList () {
 	// query {"user.id":1}
 	getByUserId(UserId, function(data){
 		testobj = data;
-		// todo: chec3k [0]
+		UserId = data._id;
 		// TODO: potential BUG: data emtpy.
-		var todo = data[0].todo;
+		var todo = data.todo;
 		
 		var todoCompleted = $.grep(todo, function(n,i){ return n.done });
 		var todoIncomplete = $.grep(todo, function(n,i){ return !n.done });
 
-		var shopping = data[0].shopping;
+		var shopping = data.shopping;
 		
 		// create section for todo
 		/*
@@ -147,8 +96,6 @@ function loadList () {
 	</ul>
 		 */
 
-		
-		
 		$.each(todoIncomplete, function(i, item) {
 			populateList (item.name, item.done, TodoIncompleteDiv);
 		});
@@ -232,6 +179,7 @@ function InsertToList(dataToSave, callBackSuccess, callBackFail) {
 		callBackFail();
 	});
 }
+
 
 function InsertToListSuccess (data) {
 	console.log("InsertToListSuccess");
@@ -354,16 +302,18 @@ function DbDeleteItem (item, callBackSuccess, callBackFail) {
 }
 
 
-function getAll() {
-	$.get( "getAll", function(data) {
-		console.log(data);
-	});
-}
-
 function getByUserId (id, callback) {
-	$.get( "getByUserId/" + id, function(data) {
-		console.log(data);
-		callback(data);
-	});
+	var postReqData = {
+			userId: id,
+			token:FbToken
+	};
+
+	$.post( 
+			"getByUserId", 
+			postReqData,
+			function(data) {
+				console.log(data);
+				callback(data);
+			});
 }
 
