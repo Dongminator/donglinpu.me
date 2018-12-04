@@ -49,6 +49,7 @@ function RemoveLoader () {
 
 
 function Authenticated () {
+	console.log("authenticated.");
 	// get data. once data is loaded, run callback.
 	LoadList(function () {
 		InitUi ();
@@ -133,18 +134,18 @@ function LoadList (callback) {
 			// Only need to run this once.
 			if (e.originalEvent.propertyName == "visibility") {
 				$(this).parent().removeClass("d-flex").addClass("d-none");
-				callback();
-				
-				$.each(todoIncomplete, function(i, item) {
-					populateList (item.name, item.done, TodoIncompleteDiv);
-				});
-				
-				$.each(todoCompleted, function(i, item) {
-					populateList (item.name, item.done, TodoCompletedDiv);
-				});
 			}
 		});
 		
+		callback();
+		
+		$.each(todoIncomplete, function(i, item) {
+			populateList (item.name, item.done, TodoIncompleteDiv);
+		});
+		
+		$.each(todoCompleted, function(i, item) {
+			populateList (item.name, item.done, TodoCompletedDiv);
+		});
 		// create section for shopping
 		
 		
