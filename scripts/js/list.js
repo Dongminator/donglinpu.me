@@ -26,9 +26,9 @@ $(function() {
 // After FB SDK is loaded, this is run. 
 function CheckLogin () {
 	console.log("checking login...");
+	ToggleLoader (true, $(".fb-login-button"));
 	FB.getLoginStatus(function(response) {
 		console.log(response);
-		
 		if (response.status === 'connected') {
 			FbToken = response.authResponse.accessToken;
 			Authenticated ();
@@ -38,41 +38,78 @@ function CheckLogin () {
 	}, true);
 }
 
-function RemoveLoader () {
-	// remove loading bar.
-	$('.circle-loader').toggleClass('load-complete'); // Once Facebook login check completes, fade out loader.
-	$('.circle-loader').on('transitionend webkitTransitionEnd oTransitionEnd', function () {
-		$(this).parent().removeClass("d-flex").addClass("d-none");
-		$(".content").removeClass("d-none");
-	});
+
+// show/hide loader
+function ToggleLoader (toEnable, selector, callback) {
+	var loader = $('.circle-loader');
+	var loaderParent = loader.parent();
+	
+	if (toEnable && loaderParent.hasClass("d-none")) {
+		// show loading
+		loaderParent.removeClass("d-none").addClass("d-flex");
+		selector.addClass("d-none");
+		loader.toggleClass('load-complete');
+	} else if ( !toEnable && loaderParent.hasClass("d-flex")) {
+		// hide loading bar
+		loader.on('transitionend webkitTransitionEnd oTransitionEnd', function (e) {
+			if (e.originalEvent.propertyName == "visibility") {
+				loaderParent.removeClass("d-flex").addClass("d-none");
+				selector.removeClass("d-none");
+				if (callback) {
+					callback();
+				}
+			}
+		});
+		loader.toggleClass('load-complete');
+	}
 }
 
 
 function Authenticated () {
 	console.log("authenticated.");
 	// get data. once data is loaded, run callback.
-	LoadList(function () {
-		InitUi ();
-		
+	LoadList(function (data) {
 		console.log("proceed with content.");
-//		$(".fb-login-button").addClass("d-none").removeClass("d-flex");
-		$(".fb-login-button").remove();
+		// TODO: potential BUG: data emtpy.
+		var todo = data.todo;
 		
+		var todoCompleted = $.grep(todo, function(n,i){ return n.done });
+		var todoIncomplete = $.grep(todo, function(n,i){ return !n.done });
+
+		var shopping = data.shopping;
+		
+		// create section for todo
+		/*
+			<ul class="list-group">
+			  <li class="list-group-item">Cras justo odio</li>
+			</ul>
+		 */
+		
+		InitUi ();
+		$(".fb-login-button").remove();
 		$("#fb-logout-btn").removeClass("d-none").click(function(){
 			FbLogout();
 		});
 		
-		$(".content").removeClass("d-none");
+		ToggleLoader (false, $(".content"), function(){
+			$.each(todoIncomplete, function(i, item) {
+				populateList (item.name, item.done, TodoIncompleteDiv);
+			});
+			
+			$.each(todoCompleted, function(i, item) {
+				populateList (item.name, item.done, TodoCompletedDiv);
+			});
+			
+			// create section for shopping
+		});
+		
 	});
 }
 
 function NotLoggedIn () {
 	console.log("NOT logged in. Making login button visible...");
-	$('.circle-loader').toggleClass('load-complete'); // Once Facebook login check completes, fade out loader.
-	$('.circle-loader').on('transitionend webkitTransitionEnd oTransitionEnd', function () {
-		$(this).parent().removeClass("d-flex").addClass("d-none");
+	ToggleLoader (false, $(".fb-login-button"), function(){
 		$(".fb-login-button").addClass("d-flex");
-		$(".fb-login-button").removeClass("d-none");
 	});
 }
 
@@ -107,48 +144,8 @@ function InitUi () {
 function LoadList (callback) {
 	// query {"user.id":1}
 	getByUserId(UserId, function(data){
-		testobj = data;
 		UserId = data._id;
-		// TODO: potential BUG: data emtpy.
-		var todo = data.todo;
-		
-		var todoCompleted = $.grep(todo, function(n,i){ return n.done });
-		var todoIncomplete = $.grep(todo, function(n,i){ return !n.done });
-
-		var shopping = data.shopping;
-		
-		// create section for todo
-		/*
-	<ul class="list-group">
-	  <li class="list-group-item">Cras justo odio</li>
-	  <li class="list-group-item">Dapibus ac facilisis in</li>
-	  <li class="list-group-item">Morbi leo risus</li>
-	  <li class="list-group-item">Porta ac consectetur ac</li>
-	  <li class="list-group-item">Vestibulum at eros</li>
-	</ul>
-		 */
-		
-		$('.circle-loader').toggleClass('load-complete'); // Once Facebook login check completes, fade out loader.
-		$('.circle-loader').on('transitionend webkitTransitionEnd oTransitionEnd', function (e) {
-			// Event fires twice, one for visibility, one for opacity. 
-			// Only need to run this once.
-			if (e.originalEvent.propertyName == "visibility") {
-				$(this).parent().removeClass("d-flex").addClass("d-none");
-			}
-		});
-		
-		callback();
-		
-		$.each(todoIncomplete, function(i, item) {
-			populateList (item.name, item.done, TodoIncompleteDiv);
-		});
-		
-		$.each(todoCompleted, function(i, item) {
-			populateList (item.name, item.done, TodoCompletedDiv);
-		});
-		// create section for shopping
-		
-		
+		callback(data);
 	});
 }
 
