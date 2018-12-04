@@ -72,14 +72,23 @@
 		</ul>
 	</nav>
 
-	<div class="d-flex d-none align-items-center justify-content-center h-100 fb-login-button" data-max-rows="1"
-				data-size="large" data-button-type="login_with"
-				data-show-faces="false" data-auto-logout-link="false"
-				data-use-continue-as="false" onlogin="CheckLogin()"></div>
+	
+	
+	<div class="loading d-flex align-items-center justify-content-center h-100">
+		<div class="circle-loader"></div>
+		<!-- <button id="toggle" type="button" class="btn btn-success">Toggle Completed</button> -->
+	</div>
 
-	<div class="container">
+
+	<div class="content d-none align-items-center justify-content-center h-100 fb-login-button"
+		data-max-rows="1" data-size="large" data-button-type="login_with"
+		data-show-faces="false" data-auto-logout-link="false"
+		data-use-continue-as="false" onlogin="CheckLogin()"></div>
+
+
+	<div class="content d-none container">
 		<!-- Incomplete -->
-		<div class="row d-none content">
+		<div class="row">
 			<div class="col-12">
 				<h3>To Do</h3>
 			</div>
@@ -136,13 +145,13 @@
 		</div>
 
 		<!-- Completed -->
-		<div class="row d-none content">
+		<div class="row">
 			<div class="col-12">
 				<h3>Completed</h3>
 			</div>
 		</div>
 
-		<div class="row d-none content">
+		<div class="row">
 			<!-- To Do List Completed  -->
 			<div class="col-12">
 				<div id="ToDoListCompleted">
@@ -163,7 +172,6 @@
 			</div>
 
 		</div>
-		
 		
 	</div>
 	<!-- /.container -->

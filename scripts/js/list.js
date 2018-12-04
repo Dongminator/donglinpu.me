@@ -13,7 +13,14 @@ var FbToken = "";
 
 // jquery 3.0 recommended syntax
 $(function() {
-	// dont do anything here. wait fb sdk load
+	// At this point, Facebook SDK may still be loading.
+	// run page loading animation here. 
+	console.log("page is loaded...");
+//	$('#toggle').click(function() {
+//		$('.circle-loader').toggleClass('load-complete');
+//		$('.checkmark').toggle();
+//	});
+
 });
 
 // After FB SDK is loaded, this is run. 
@@ -21,9 +28,9 @@ function CheckLogin () {
 	console.log("checking login...");
 	FB.getLoginStatus(function(response) {
 		console.log(response);
+		
 		if (response.status === 'connected') {
 			FbToken = response.authResponse.accessToken;
-			
 			Authenticated ();
 		} else {
 			NotLoggedIn();
@@ -31,26 +38,41 @@ function CheckLogin () {
 	}, true);
 }
 
+function RemoveLoader () {
+	// remove loading bar.
+	$('.circle-loader').toggleClass('load-complete'); // Once Facebook login check completes, fade out loader.
+	$('.circle-loader').on('transitionend webkitTransitionEnd oTransitionEnd', function () {
+		$(this).parent().removeClass("d-flex").addClass("d-none");
+		$(".content").removeClass("d-none");
+	});
+}
+
 
 function Authenticated () {
-	console.log("proceed with content.");
-//	$(".fb-login-button").addClass("d-none").removeClass("d-flex");
-	$(".fb-login-button").remove();
-	
-	$("#fb-logout-btn").removeClass("d-none").click(function(){
-		FbLogout();
+	// get data. once data is loaded, run callback.
+	LoadList(function () {
+		InitUi ();
+		
+		console.log("proceed with content.");
+//		$(".fb-login-button").addClass("d-none").removeClass("d-flex");
+		$(".fb-login-button").remove();
+		
+		$("#fb-logout-btn").removeClass("d-none").click(function(){
+			FbLogout();
+		});
+		
+		$(".content").removeClass("d-none");
 	});
-	
-	$(".content").removeClass("d-none");
-	
-	InitUi ();
-	
-	LoadList();
 }
 
 function NotLoggedIn () {
 	console.log("NOT logged in. Making login button visible...");
-	$(".fb-login-button").removeClass("d-none");
+	$('.circle-loader').toggleClass('load-complete'); // Once Facebook login check completes, fade out loader.
+	$('.circle-loader').on('transitionend webkitTransitionEnd oTransitionEnd', function () {
+		$(this).parent().removeClass("d-flex").addClass("d-none");
+		$(".fb-login-button").addClass("d-flex");
+		$(".fb-login-button").removeClass("d-none");
+	});
 }
 
 function FbLogout() {
@@ -75,10 +97,13 @@ function InitUi () {
 
 /*
  * this method retrieves both todo list and shopping list from DB
+ * After list is back from DB
+ * - remove loading
+ * - remove fb login button
+ * - update FB Logout link action
+ * - remove d-none on content
  */
-
-
-function LoadList () {
+function LoadList (callback) {
 	// query {"user.id":1}
 	getByUserId(UserId, function(data){
 		testobj = data;
@@ -101,16 +126,27 @@ function LoadList () {
 	  <li class="list-group-item">Vestibulum at eros</li>
 	</ul>
 		 */
-
-		$.each(todoIncomplete, function(i, item) {
-			populateList (item.name, item.done, TodoIncompleteDiv);
-		});
 		
-		$.each(todoCompleted, function(i, item) {
-			populateList (item.name, item.done, TodoCompletedDiv);
+		$('.circle-loader').toggleClass('load-complete'); // Once Facebook login check completes, fade out loader.
+		$('.circle-loader').on('transitionend webkitTransitionEnd oTransitionEnd', function (e) {
+			// Event fires twice, one for visibility, one for opacity. 
+			// Only need to run this once.
+			if (e.originalEvent.propertyName == "visibility") {
+				$(this).parent().removeClass("d-flex").addClass("d-none");
+				callback();
+				
+				$.each(todoIncomplete, function(i, item) {
+					populateList (item.name, item.done, TodoIncompleteDiv);
+				});
+				
+				$.each(todoCompleted, function(i, item) {
+					populateList (item.name, item.done, TodoCompletedDiv);
+				});
+			}
 		});
 		
 		// create section for shopping
+		
 		
 	});
 }
