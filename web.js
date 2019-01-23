@@ -143,6 +143,25 @@ app.get('/projects', function(req, res){
 	});
 });
 
+//privary
+app.get('/privacy', function(req, res){
+	fs.readFile('privacy-policy.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+//privary
+app.get('/tos', function(req, res){
+	fs.readFile('terms-of-service.html', function(err, file) {
+		res.setHeader('Content-Type', 'text/html');
+		res.setHeader('Content-Length', file.length);
+		res.end(file);
+	});
+});
+
+
 app.get('/waibao', function(req, res){
 	fs.readFile('waibao.html', function(err, file) {
 		res.setHeader('Content-Type', 'text/html');
