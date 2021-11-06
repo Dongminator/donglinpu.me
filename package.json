@@ -7,7 +7,6 @@
     "dotenv": "^6.1.0",
     "express": "*",
     "less": "*",
-    "mongodb": "^3.1.8",
     "techan": "^0.8.0"
   },
   "engines": {
