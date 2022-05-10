@@ -552,3 +552,22 @@ app.get('/stock/:arg1/:arg2?', function(request, response){
 app.get('/list', function(req, res){
 	res.redirect("https://www.zhelist.com");
 });
+
+app.get('/timeout*', async function(req, res){
+	await delay(5000);
+	res.send();
+});
+
+function delay (x) {
+	return new Promise((resolve, reject) => {
+		setTimeout(async () => {
+			try {
+				resolve({
+					resp: "timeout after 5s"
+				});
+			} catch (e) {
+				return reject(e);
+			}
+		}, x ?? 5000)
+	});
+}
