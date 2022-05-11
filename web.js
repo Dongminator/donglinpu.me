@@ -557,6 +557,14 @@ app.get('/timeout*', async function(req, res){
 	await delay(5000);
 	res.send();
 });
+app.post('/timeout*', async function(req, res){
+	await delay(5000);
+	res.send();
+});
+app.put('/timeout*', async function(req, res){
+	await delay(5000);
+	res.send();
+});
 
 function delay (x) {
 	return new Promise((resolve, reject) => {
