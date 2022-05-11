@@ -553,15 +553,15 @@ app.get('/list', function(req, res){
 	res.redirect("https://www.zhelist.com");
 });
 
-app.get('/timeout*', async function(req, res){
+app.get('/fi*', async function(req, res){
 	await delay(5000);
 	res.send();
 });
-app.post('/timeout*', async function(req, res){
+app.post('/fi*', async function(req, res){
 	await delay(5000);
 	res.send();
 });
-app.put('/timeout*', async function(req, res){
+app.put('/fi*', async function(req, res){
 	await delay(5000);
 	res.send();
 });
