@@ -53,16 +53,16 @@ if (process.env.NODE_ENV != 'production') {
 };
 
 
-if (process.env.NODE_ENV === 'production') {
-	// Force redirect of HTTP to HTTPS
-	var forceSsl = function (req, res, next) {
-		if (req.headers['x-forwarded-proto'] !== 'https') {
-			return res.redirect(['https://', req.get('Host'), req.url].join(''));
-		}
-		return next();
-	};
-	app.use(forceSsl);
-}
+// if (process.env.NODE_ENV === 'production') {
+// 	// Force redirect of HTTP to HTTPS
+// 	var forceSsl = function (req, res, next) {
+// 		if (req.headers['x-forwarded-proto'] !== 'https') {
+// 			return res.redirect(['https://', req.get('Host'), req.url].join(''));
+// 		}
+// 		return next();
+// 	};
+// 	app.use(forceSsl);
+// }
  
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
